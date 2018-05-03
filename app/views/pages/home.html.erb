@@ -1,0 +1,10 @@
+<h1>Welcome to PickItUp!</h1>
+<p>Furniture Pickup & Delivery</p>
+
+
+<div class="signout">
+    <% if current_user %>
+    (<%= current_user.email %>)  
+        <%= link_to_unless_current 'Sign-Out', destroy_user_session_path, method: :delete %>
+    <% end %>
+</div> 
