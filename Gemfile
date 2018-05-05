@@ -5,6 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# File Upload
+gem 'shrine', '~> 2.10', '>= 2.10.1'
+#image processing
+gem 'image_processing', '~> 1.2'
+
 gem 'geocoder'
 gem 'country_select'
 gem 'devise', '~> 4.4', '>= 4.4.3'
