@@ -11,11 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :profile_user_id %>
-  </div>
-
+<article id="contact">
   <div class="field">
     <%= form.label :first_name %>
     <%= form.text_field :first_name, id: :profile_first_name %>
@@ -58,20 +54,12 @@
 
   <div class="field">
     <%= form.label :country_code %>
-    <%= form.text_field :country_code, id: :profile_country_code %>
-  </div>
-
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, id: :profile_latitude %>
-  </div>
-
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, id: :profile_longitude %>
+       <%= form.country_select :country_code, priority_countries: ['AU', 'NZ', 'KR'] %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
+  </div>
+  
   </div>
 <% end %>
