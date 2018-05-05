@@ -17,11 +17,6 @@
   </p>
 
   <p>
-    <strong>Image data:</strong>
-    <%= @profile.image_data %>
-  </p>
-
-  <p>
     <strong>Street address:</strong>
     <%= @profile.street_address %>
   </p>
@@ -46,6 +41,10 @@
     <%= @profile.country_code %>
   </p>
 
+  <% if @profile.image.present? %>
+    <%= render 'image', profile: @profile, version_size: :medium %>
+  <% end%>
+  
   <%= google_map_image_tag(@profile) %>
 
   <br><br>
