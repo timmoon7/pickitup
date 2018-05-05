@@ -39,6 +39,12 @@
   .container {
     padding: 10px;
   }
+
+  .profile_details {
+    width: 100%;
+    margin: 7px auto;
+  }
+
   
   #footer {
     background-color: #66503D;

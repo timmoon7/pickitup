@@ -1,64 +1,55 @@
-<p id="notice"><%= notice %></p>
+<h1>Profile Details</h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
+<div class="profile_details">
+  <p>
+    <strong>Email:</strong>
+    <%= current_user.email %>
+  </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @profile.first_name %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @profile.full_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @profile.last_name %>
-</p>
+  <p>
+    <strong>Phone:</strong>
+    <%= @profile.phone %>
+  </p>
 
-<p>
-  <strong>Image data:</strong>
-  <%= @profile.image_data %>
-</p>
+  <p>
+    <strong>Image data:</strong>
+    <%= @profile.image_data %>
+  </p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @profile.phone %>
-</p>
+  <p>
+    <strong>Street address:</strong>
+    <%= @profile.street_address %>
+  </p>
 
-<p>
-  <strong>Street address:</strong>
-  <%= @profile.street_address %>
-</p>
+  <p>
+    <strong>City:</strong>
+    <%= @profile.city %>
+  </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
+  <p>
+    <strong>State:</strong>
+    <%= @profile.state %>
+  </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @profile.state %>
-</p>
+  <p>
+    <strong>Postcode:</strong>
+    <%= @profile.postcode %>
+  </p>
 
-<p>
-  <strong>Postcode:</strong>
-  <%= @profile.postcode %>
-</p>
+  <p>
+    <strong>Country code:</strong>
+    <%= @profile.country_code %>
+  </p>
 
-<p>
-  <strong>Country code:</strong>
-  <%= @profile.country_code %>
-</p>
+  <%= google_map_image_tag(@profile) %>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @profile.latitude %>
-</p>
+  <br><br>
+  <%= link_to 'Edit', edit_profile_path(@profile) %> |
+  <%= link_to 'Back', profiles_path %>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @profile.longitude %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+</div>
