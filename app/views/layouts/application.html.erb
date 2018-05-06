@@ -20,9 +20,10 @@
           <li><a href="#">Post a Task</a></li>
           <li><a href="#">Browse Tasks</a></li>
         </ul>
+        
         <ul class="menu">
               <% if current_user %>
-                  (<%= current_user.email %>) | 
+                  (<%= link_to current_user.email, edit_profile_path(current_user.profile) %>) | 
                   <li><%= link_to_unless_current 'Sign-Out', destroy_user_session_path, method: :delete %></li>
               <% else %>
                   <li><%= link_to 'Log In', new_user_session_path %></li>

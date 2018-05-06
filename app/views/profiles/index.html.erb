@@ -25,7 +25,11 @@
         <td><%= profile.user.email %></td>
         <td><%= profile.first_name %></td>
         <td><%= profile.last_name %></td>
-        <td><%= profile.image_data %></td>
+        <td><% if profile.image.present? %>
+            <%= render 'image', profile: profile, version_size: :medium %></td>
+        <% else %>
+          <td>No Image</td>
+        <% end%>
         <td><%= profile.phone %></td>
         <td><%= profile.street_address %></td>
         <td><%= profile.city %></td>
