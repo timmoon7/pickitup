@@ -1,0 +1,58 @@
+<p id="notice"><%= notice %></p>
+
+ <% if @task.image.present? %>
+    <%= render 'image', task: @task, version_size: :medium %>
+  <% end%>
+
+<p>
+  <strong>User:</strong>
+  <%= @task.user.profile.first_name %>
+</p>
+
+<p>
+  <strong>Main category:</strong>
+  <%= @task.main_category.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @task.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @task.body %>
+</p>
+
+<p>
+  <strong>Delivery address:</strong>
+  <%= @task.delivery_address %>
+</p>
+
+<p>
+  <strong>Pickup address:</strong>
+  <%= @task.pickup_address %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @task.price %>
+</p>
+
+<p>
+  <strong>Pickup time:</strong>
+  <%= @task.pickup_time %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @task.status %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @task.driver_id %>
+</p>
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>

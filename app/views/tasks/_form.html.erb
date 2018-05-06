@@ -1,0 +1,58 @@
+<%= form_with(model: task, local: true) do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :main_category_id %>
+    <%= form.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :task_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :body, id: :task_body %>
+  </div>
+
+  <div class="field"> 
+    <%= form.label :image_data %>
+    <%= form.hidden_field :image, value: task.cached_image_data %>
+    <%= form.file_field :image, id: :task_image_data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :delivery_address %>
+    <%= form.text_field :delivery_address, id: :task_delivery_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickup_address %>
+    <%= form.text_field :pickup_address, id: :task_pickup_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :task_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickup_time %>
+    <%= form.datetime_select :pickup_time, id: :task_pickup_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

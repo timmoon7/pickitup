@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180506051944) do
+ActiveRecord::Schema.define(version: 20180506125212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,24 @@ ActiveRecord::Schema.define(version: 20180506051944) do
     t.index ["main_category_id"], name: "index_sub_categories_on_main_category_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "main_category_id"
+    t.string "title"
+    t.text "body"
+    t.string "delivery_address"
+    t.string "pickup_address"
+    t.integer "price"
+    t.datetime "pickup_time"
+    t.string "status"
+    t.integer "driver_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "image_data"
+    t.index ["main_category_id"], name: "index_tasks_on_main_category_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -72,4 +90,6 @@ ActiveRecord::Schema.define(version: 20180506051944) do
 
   add_foreign_key "profiles", "users"
   add_foreign_key "sub_categories", "main_categories"
+  add_foreign_key "tasks", "main_categories"
+  add_foreign_key "tasks", "users"
 end

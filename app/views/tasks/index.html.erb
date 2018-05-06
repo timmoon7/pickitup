@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Main category</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Delivery address</th>
+      <th>Pickup address</th>
+      <th>Price</th>
+      <th>Pickup time</th>
+      <th>Status</th>
+      <th>Driver</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.user.profile.first_name %></td>
+        <td><%= task.main_category.name %></td>
+        <td><%= task.title %></td>
+        <td><%= task.body %></td>
+        <td><%= task.delivery_address %></td>
+        <td><%= task.pickup_address %></td>
+        <td><%= task.price %></td>
+        <td><%= task.pickup_time %></td>
+        <td><%= task.status %></td>
+        <td><%= task.driver_id %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Task', new_task_path %>

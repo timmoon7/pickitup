@@ -17,8 +17,8 @@
             <a href="/"><%= image_tag "logo_trans.png", class: "logo-icon" %></a>
         </ul>
         <ul class="left_menu">
-          <li><a href="#">Post a Task</a></li>
-          <li><a href="#">Browse Tasks</a></li>
+          <li><%= link_to 'Post a Task', new_task_path %></li>
+          <li><%= link_to 'Browse Tasks', tasks_path %></li>
         </ul>
         
         <ul class="menu">
