@@ -22,7 +22,7 @@
         </ul>
         
         <ul class="menu">
-              <% if current_user %>
+              <% if current_user && current_user.profile %>
                   (<%= link_to current_user.email, edit_profile_path(current_user.profile) %>) | 
                   <li><%= link_to_unless_current 'Sign-Out', destroy_user_session_path, method: :delete %></li>
               <% else %>

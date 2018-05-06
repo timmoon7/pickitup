@@ -45,7 +45,7 @@
 
   <div class="field">
     <%= form.label :state %>
-    <%= form.text_field :state %>
+    <%= form.collection_select :state, State.all, :name, :name, prompt: true %>
   </div>
 
   <div class="field">

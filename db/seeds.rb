@@ -59,3 +59,14 @@
     # { main_category_id: 5, name: 'playpens' },                     
     # { main_category_id: 5, name: 'others' }
     # ])
+
+    # states = State.create([
+    # { name: 'ACT' },
+    # { name: 'NSW' },
+    # { name: 'NT' },
+    # { name: 'QLD' },
+    # { name: 'SA' },
+    # { name: 'TAS' },
+    # { name: 'VIC' },
+    # { name: 'WA' } 
+    # ])

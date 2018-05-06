@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # File Upload
+gem 'aws-sdk-s3', '~> 1.9', '>= 1.9.1'
 gem 'shrine', '~> 2.10', '>= 2.10.1'
 #image processing
 gem 'image_processing', '~> 1.2'
