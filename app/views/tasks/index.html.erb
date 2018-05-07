@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
+<h1>Current Tasks</h1>
+
+
+<%= form_with scope: :tasks, method: :get, local: true do |f| %>
+  <%= f.label :category_id %>
+  <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
+  <%= f.submit :search %>
+<% end %>
 
 <table>
   <thead>

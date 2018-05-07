@@ -4,7 +4,20 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    # @tasks = Task.all
+
+    unless params[:tasks].present? 
+      @tasks = Task.all
+    else
+      unless params[:tasks][:main_category_id].blank?
+        search_category = params[:tasks][:main_category_id]
+        @tasks = Task.where(main_category_id: search_category).all
+      else
+        @tasks = Task.all
+      end
+      # @tasks = Task.search_by_name(search_task)      
+    end
+
   end
 
   # GET /tasks/1
