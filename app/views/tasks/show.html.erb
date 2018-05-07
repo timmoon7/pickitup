@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Task Details</h1>
+<br>
+
  <% if @task.image.present? %>
     <%= image_tag @task.image_url(:medium) %>
 <% end%>

@@ -1,24 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Current Tasks</h1>
+<br>
 
+<div class="search">
+  <%= form_with scope: :tasks, method: :get, local: true do |f| %>
+    <%= f.label :category_id %>:&nbsp;
+    <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
+    <%= f.submit :search, class: 'search_btn' %>
+  <% end %>
+</div>
 
-<%= form_with scope: :tasks, method: :get, local: true do |f| %>
-  <%= f.label :category_id %>
-  <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
-  <%= f.submit :search %>
-<% end %>
-
-<table>
+<table class="center">
   <thead>
     <tr>
       <th>User</th>
-      <th>Main category</th>
+      <th>Category</th>
       <th>Title</th>
       <th>Image</th>      
       <th>Description</th>
-      <th>Delivery address</th>
-      <th>Pickup address</th>
+      <th>Delivery addr</th>
+      <th>Pickup addr</th>
       <th>Price</th>
       <th>Pickup time</th>
       <th>Status</th>
