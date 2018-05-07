@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)c
-# categories = MainCategory.create([
-# { name: 'Seats' },
-# { name: 'Beds' },
-# { name: 'Tables' },
-# { name: 'Storage' },
-# { name: 'Other Furniture' }
-# ])
+categories = MainCategory.create([
+{ name: 'Seats' },
+{ name: 'Beds' },
+{ name: 'Tables' },
+{ name: 'Storage' },
+{ name: 'Other Furniture' }
+])
 
 # sub_categories1 = SubCategory.create([
 #     { main_category_id: 1, name: 'sofas' },
@@ -60,13 +60,13 @@
     # { main_category_id: 5, name: 'others' }
     # ])
 
-    # states = State.create([
-    # { name: 'ACT' },
-    # { name: 'NSW' },
-    # { name: 'NT' },
-    # { name: 'QLD' },
-    # { name: 'SA' },
-    # { name: 'TAS' },
-    # { name: 'VIC' },
-    # { name: 'WA' } 
-    # ])
+    states = State.create([
+    { name: 'ACT' },
+    { name: 'NSW' },
+    { name: 'NT' },
+    { name: 'QLD' },
+    { name: 'SA' },
+    { name: 'TAS' },
+    { name: 'VIC' },
+    { name: 'WA' } 
+    ])
