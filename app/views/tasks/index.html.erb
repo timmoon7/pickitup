@@ -8,6 +8,7 @@
       <th>User</th>
       <th>Main category</th>
       <th>Title</th>
+      <th>Image</th>      
       <th>Description</th>
       <th>Delivery address</th>
       <th>Pickup address</th>
@@ -25,6 +26,11 @@
         <td><%= task.user.profile.first_name %></td>
         <td><%= task.main_category.name %></td>
         <td><%= task.title %></td>
+        <td><% if task.image.present? %>
+            <%= render 'image', task: task, version_size: :thumb %></td>
+        <% else %>
+          No Image
+        <% end%></td>        
         <td><%= task.body %></td>
         <td><%= task.delivery_address %></td>
         <td><%= task.pickup_address %></td>
@@ -32,8 +38,8 @@
         <td><%= task.pickup_time %></td>
         <td><%= task.status %></td>
         <td><%= task.driver_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Show | ', task %></td>
+        <td><%= link_to 'Edit | ', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
