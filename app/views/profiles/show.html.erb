@@ -39,10 +39,10 @@
   <p>
     <strong>Country code:</strong>
     <%= @profile.country_code %>
-  </p>
+  </p> 
 
   <% if @profile.image.present? %>
-    <%= render 'image', profile: @profile, version_size: :medium %>
+    <%= image_tag @profile.image_url(:medium) %>
   <% end%>
   
   <%= google_map_image_tag(@profile) %>

@@ -33,11 +33,13 @@
         <td><%= task.user.profile.first_name %></td>
         <td><%= task.main_category.name %></td>
         <td><%= task.title %></td>
-        <td><% if task.image.present? %>
-            <%= render 'image', task: task, version_size: :thumb %></td>
-        <% else %>
-          No Image
-        <% end%></td>        
+        <td>
+          <% if task.image.present? %>
+            <%= image_tag task.image_url(:thumb) %>
+          <% else %>
+            No Image
+          <% end%>
+        </td>        
         <td><%= task.body %></td>
         <td><%= task.delivery_address %></td>
         <td><%= task.pickup_address %></td>

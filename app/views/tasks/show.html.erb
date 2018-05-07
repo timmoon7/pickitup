@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
  <% if @task.image.present? %>
-    <%= render 'image', task: @task, version_size: :medium %>
-  <% end%>
+    <%= image_tag @task.image_url(:medium) %>
+<% end%>
 
 <p>
   <strong>User:</strong>
