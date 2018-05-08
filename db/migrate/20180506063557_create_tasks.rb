@@ -10,7 +10,7 @@ class CreateTasks < ActiveRecord::Migration[5.1]
       t.integer :price
       t.timestamp :pickup_time
       t.string :status
-      t.integer :driver, foreign_key: {to_table: :users}
+      t.references :driver, foreign_key: {to_table: :users}
 
       t.timestamps
     end

@@ -40,7 +40,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     @task.status = 'posted'
-    @task.driver_id = current_user.id
+    @task.driver = current_user
 
     respond_to do |format|
       if @task.save
