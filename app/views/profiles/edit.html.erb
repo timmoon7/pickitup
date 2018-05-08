@@ -3,5 +3,9 @@
 
 <%= render 'form', profile: @profile %>
 
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Home', root_path %>
+
+<br>
+<div class="links">
+    <%= link_to 'Show', @profile, class: "link_btn" %>
+    <%= link_to 'Home', root_path, class: "link_btn" %>
+</div>

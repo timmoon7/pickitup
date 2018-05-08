@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<h1>My Watchlist</h1>
+<br>
+
+<% if @watchlists.count > 0 %>
+  <table class="center">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Category</th>
+        <th>Title</th>
+        <th>Image</th>      
+        <th>Delivery addr</th>
+        <th>Pickup addr</th>
+        <th>Price</th>
+        <th>Pickup time</th>
+        <th>Status</th>
+        <th>Driver</th>        
+        <th colspan="2">Menus</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @watchlists.each do |watchlist| %>
+        <tr>
+          <td><%= watchlist.task.user.profile.first_name %></td>
+          <td><%= watchlist.task.main_category.name %></td>
+          <td><%= watchlist.task.title %></td>
+          <td>
+            <% if watchlist.task.image.present? %>
+              <%= image_tag watchlist.task.image_url(:thumb) %>
+            <% else %>
+              <%= image_tag "noimage.jpeg", class: "thumbimage" %>
+            <% end%>
+          </td>        
+          <td><%= watchlist.task.delivery_address %></td>
+          <td><%= watchlist.task.pickup_address %></td>
+          <td><%= watchlist.task.price_in_dollars %></td>
+          <td><%= watchlist.task.pickup_time %></td>
+          <td><%= watchlist.task.status %></td>
+          <td>
+            <% if watchlist.task.status == "accepted" %>
+              <%= watchlist.task.driver.profile.first_name %>
+            <% end %>
+          </td>
+          <td><%= link_to 'Show', watchlist.task %></td>
+          <!-- the second arg 2 is for comming back to this page after delete watchlist -->
+          <td><%= link_to 'Unwatch', delete_watchlist_path(watchlist.task, 2), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <h2 class="nodata">No Tasks in your Watchlist</h2>
+<% end %>
+
+<br>
+<div class="links">
+  <%= link_to 'Browse Tasks', tasks_path, class: "link_btn" %>
+</div>

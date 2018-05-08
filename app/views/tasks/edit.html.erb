@@ -3,5 +3,7 @@
 
 <%= render 'form', task: @task %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+<div class="links">
+    <%= link_to 'Show', @task, class: "link_btn" %>
+    <%= link_to 'Back', tasks_path, class: "link_btn" %>
+</div>

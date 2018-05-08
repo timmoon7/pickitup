@@ -62,6 +62,8 @@
 <% else %>
   <h2 class="nodata">No Tasks posted!</h2>
 <% end %>
-<br>
 
-<%= link_to 'New Task', new_task_path %>
+<br>
+<div class="links">
+  <%= link_to 'New Task', new_task_path, class: "link_btn" %>
+</div>

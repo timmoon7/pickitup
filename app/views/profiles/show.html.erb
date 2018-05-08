@@ -1,71 +1,64 @@
 <h1 align="center">Profile Details</h1>
 <br>
 
-<div class="profile_details">
-  <div class="row">
-    <div class="info_column">
-      <p>
-        <strong>Email:</strong>
-        <%= @profile.user.email %>
-      </p>
-
-      <p>
-        <strong>Name:</strong>
-        <%= @profile.full_name %>
-      </p>
-
-      <p>
-        <strong>Phone:</strong>
-        <%= @profile.phone %>
-      </p>
-
-      <p>
-        <strong>Street address:</strong>
-        <%= @profile.street_address %>
-      </p>
-
-      <p>
-        <strong>City:</strong>
-        <%= @profile.city %>
-      </p>
-
-      <p>
-        <strong>State:</strong>
-        <%= @profile.state %>
-      </p>
-
-      <p>
-        <strong>Postcode:</strong>
-        <%= @profile.postcode %>
-      </p>
-
-      <p>
-        <strong>Country code:</strong>
-        <%= @profile.country_code %>
-      </p> 
+<div class="row">
+  <div class="card">
+    <% if @profile.image.present? %>
+      <%= image_tag @profile.image_url(:medium) %>
+    <% else %>
+      <%= image_tag "noimage.jpeg" %>
+    <% end%>
+    <div class="person_info">
+      <h4><b><%= @profile.full_name %></b></h4> 
+      <p><%= @profile.city %></p> 
     </div>
+  </div>  <!-- end of card -->
 
-      <div class="card">
-        <% if @profile.image.present? %>
-          <%= image_tag @profile.image_url(:medium) %>
-        <% else %>
-          <%= image_tag "noimage.jpeg" %>
-        <% end%>
-        <div class="person_info">
-          <h4><b><%= @profile.full_name %></b></h4> 
-          <p><%= @profile.city %></p> 
-        </div>
-      </div>
+  <div class="info_column">
+    <p>
+      <strong>Email:</strong>
+      <%= @profile.user.email %>
+    </p>
 
-      <%= google_map_image_tag(@profile) %>
+    <p>
+      <strong>Name:</strong>
+      <%= @profile.full_name %>
+    </p>
 
-    </div>
-  </div>
+    <p>
+      <strong>Phone:</strong>
+      <%= @profile.phone %>
+    </p>
 
-  <br>
-  <div class="links">
-    <%= link_to 'Edit', edit_profile_path(@profile) %> |
-    <%= link_to 'Back', profiles_path %>
-  </div>
+    <p>
+      <strong>Street address:</strong>
+      <%= @profile.street_address %>
+    </p>
 
+    <p>
+      <strong>City:</strong>
+      <%= @profile.city %>
+    </p>
+
+    <p>
+      <strong>State:</strong>
+      <%= @profile.state %>
+    </p>
+
+    <p>
+      <strong>Postcode:</strong>
+      <%= @profile.postcode %>
+    </p>
+
+    <p>
+      <strong>Country code:</strong>
+      <%= @profile.country_code %>
+    </p> 
+  </div>  <!-- end of info_column -->
+</div>  <!-- end of row -->
+
+<br>
+<div class="links">
+  <%= link_to 'Edit', edit_profile_path(@profile), class: "link_btn" %>
+  <%= link_to 'Back', profiles_path, class: "link_btn" %>
 </div>
