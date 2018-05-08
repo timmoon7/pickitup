@@ -40,6 +40,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     @task.status = 'posted'
+    @task.driver = current_user
 
     respond_to do |format|
       if @task.save
@@ -82,7 +83,7 @@ class TasksController < ApplicationController
     driver = current_user.id
     respond_to do |format|
       if @task.update_attributes(status: 'accepted', driver_id: driver)
-        format.html { redirect_to @task, notice: 'Driver accepted the task successfully.' }
+        format.html { redirect_to tasks_url, notice: 'Driver accepted the task successfully.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -96,7 +97,7 @@ class TasksController < ApplicationController
   def assign
     respond_to do |format|
       if @task.update_attributes(status: 'assigned')
-        format.html { redirect_to @task, notice: 'User assigned the task successfully.' }
+        format.html { redirect_to tasks_url, notice: 'User assigned the task successfully.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -110,7 +111,7 @@ class TasksController < ApplicationController
   def paid
     respond_to do |format|
       if @task.update_attributes(status: 'paid')
-        format.html { redirect_to @task, notice: 'User assigned the task successfully.' }
+        format.html { redirect_to tasks_url, notice: 'User assigned the task successfully.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -124,7 +125,7 @@ class TasksController < ApplicationController
   def complete
     respond_to do |format|
       if @task.update_attributes(status: 'completed')
-        format.html { redirect_to @task, notice: 'User assigned the task successfully.' }
+        format.html { redirect_to tasks_url, notice: 'User assigned the task successfully.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
