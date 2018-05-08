@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180506125212) do
+ActiveRecord::Schema.define(version: 20180508060735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,10 +63,11 @@ ActiveRecord::Schema.define(version: 20180506125212) do
     t.integer "price"
     t.datetime "pickup_time"
     t.string "status"
-    t.integer "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image_data"
+    t.bigint "driver_id"
+    t.index ["driver_id"], name: "index_tasks_on_driver_id"
     t.index ["main_category_id"], name: "index_tasks_on_main_category_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -92,4 +93,5 @@ ActiveRecord::Schema.define(version: 20180506125212) do
   add_foreign_key "sub_categories", "main_categories"
   add_foreign_key "tasks", "main_categories"
   add_foreign_key "tasks", "users"
+  add_foreign_key "tasks", "users", column: "driver_id"
 end

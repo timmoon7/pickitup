@@ -3,60 +3,71 @@
 <h1>Task Details</h1>
 <br>
 
+<div class="row">
  <% if @task.image.present? %>
     <%= image_tag @task.image_url(:medium) %>
-<% end%>
+  <% end%>
 
-<p>
-  <strong>User:</strong>
-  <%= @task.user.profile.first_name %>
-</p>
+  <div class="info_column">
+    <p>
+      <strong>User:</strong>
+      <%= @task.user.profile.first_name %>
+    </p>
 
-<p>
-  <strong>Main category:</strong>
-  <%= @task.main_category.name %>
-</p>
+    <p>
+      <strong>Main category:</strong>
+      <%= @task.main_category.name %>
+    </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+    <p>
+      <strong>Title:</strong>
+      <%= @task.title %>
+    </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @task.body %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @task.body %>
+    </p>
 
-<p>
-  <strong>Delivery address:</strong>
-  <%= @task.delivery_address %>
-</p>
+    <p>
+      <strong>Delivery address:</strong>
+      <%= @task.delivery_address %>
+    </p>
 
-<p>
-  <strong>Pickup address:</strong>
-  <%= @task.pickup_address %>
-</p>
+    <p>
+      <strong>Pickup address:</strong>
+      <%= @task.pickup_address %>
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @task.price %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      <%= @task.price_in_dollars %>
+    </p>
 
-<p>
-  <strong>Pickup time:</strong>
-  <%= @task.pickup_time %>
-</p>
+    <p>
+      <strong>Pickup time:</strong>
+      <%= @task.pickup_time %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @task.status %>
+    </p>
 
-<p>
-  <strong>Driver:</strong>
-  <%= @task.driver_id %>
-</p>
+    <p>
+      <strong>Driver:</strong>
+      <% if @task.status == "accepted" %>
+        <%= @task.driver.profile.first_name %>
+      <% end %>
+    </p>
+  </div>
+</div>
 
 <br>
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<div class="links">
+  <%= link_to 'Accept', accept_task_path(@task), method: :patch %> |
+  <%= link_to 'Assign', assign_task_path(@task), method: :patch %> |
+  <%= link_to 'Complete', complete_task_path(@task), method: :patch %> |
+  <%= link_to 'Edit', edit_task_path(@task) %> |
+  <%= link_to 'Back', tasks_path %>
+</div>

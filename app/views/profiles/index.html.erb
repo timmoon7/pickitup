@@ -26,11 +26,13 @@
         <td><%= profile.user.email %></td>
         <td><%= profile.first_name %></td>
         <td><%= profile.last_name %></td>
-        <td><% if profile.image.present? %>
+        <td>
+        <% if profile.image.present? %>
             <%= image_tag profile.image_url(:thumb) %>
         <% else %>
-          No Image
+          <%= image_tag "noimage.jpeg", class: "thumbimage" %>
         <% end%></td>
+
         <td><%= profile.phone %></td>
         <td><%= profile.street_address %></td>
         <td><%= profile.city %></td>

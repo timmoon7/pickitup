@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :assign]
 
   # GET /tasks
   # GET /tasks.json
@@ -75,6 +75,64 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  def accept
+    driver = current_user.id
+    respond_to do |format|
+      if @task.update_attributes(status: 'accepted', driver_id: driver)
+        format.html { redirect_to @task, notice: 'Driver accepted the task successfully.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  def assign
+    respond_to do |format|
+      if @task.update_attributes(status: 'assigned')
+        format.html { redirect_to @task, notice: 'User assigned the task successfully.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  def paid
+    respond_to do |format|
+      if @task.update_attributes(status: 'paid')
+        format.html { redirect_to @task, notice: 'User assigned the task successfully.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  def complete
+    respond_to do |format|
+      if @task.update_attributes(status: 'completed')
+        format.html { redirect_to @task, notice: 'User assigned the task successfully.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
