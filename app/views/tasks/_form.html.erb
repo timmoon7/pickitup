@@ -49,7 +49,7 @@
 
   <div class="field">
     <%= form.label :pickup_time %>
-    <%= form.datetime_select :pickup_time, id: :task_pickup_time %>
+    <%= form.datetime_select :pickup_time, id: :task_pickup_time, start_hour: 07, end_hour: 20, minute_step: 10 %>
   </div>
 
   <div class="actions">
