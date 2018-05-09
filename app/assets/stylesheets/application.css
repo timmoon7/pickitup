@@ -13,12 +13,13 @@
     background: #FFF;
     width: 100%;
     margin: 80px auto;
-    line-height: 30px;
+    line-height: 22px;
     text-align: left;
   }
   
   h1 {
     text-align: center;
+    font-family: 'Exo 2', sans-serif;
   }
 
   h2.nodata {
@@ -51,9 +52,8 @@
   }
 
   ul.left_menu {
-    margin-left: 15px;
+    margin-left: 30px;
     display: flex;
-    flex: auto;
     align-items: center;
     justify-content: flex-start;
   }
@@ -67,7 +67,8 @@
   }
   
   li a:hover {
-    background-color: #616C75;
+    background-color: #548F96;
+    color: #F8F8F8;
   }
 
   .search {
@@ -91,7 +92,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 1rem;
+    padding: 0.7rem;
     font-family: 'Roboto Condensed',sans-serif;
     background-color: #235B62;
     color: #C1FBFF;
@@ -110,13 +111,9 @@
   }
   
   .logo {
-    max-width: 100px;
-  }
-
-  .logo {
     max-width: 80px;
   }
-  
+
   /* flex styles */
   nav ul.logo li {
     flex: 1 1 0;
@@ -152,19 +149,19 @@
     border-right: solid 1px grey;
   }
 
-    /* Card Avatar */
-    .card {
-      display: inline-block;
-      border: 1px solid #235B62;
-      /* Add shadows to create the "card" effect */
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      transition: 0.3s;
-      border-radius: 5px; /* 5px rounded corners */
+  /* Card Avatar */
+  .card {
+    display: inline-block;
+    border: 1px solid #235B62;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
   }
 
   /* Add rounded corners to the top left and the top right corner of the image */
   .card img {
-      border-radius: 5px 5px 0 0;
+      border-radius: 7px 7px 0 0;
   }
 
   /* On mouse-over, add a deeper shadow */
@@ -188,16 +185,24 @@
   .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     padding: 1rem;
   }
 
   .info_column {
+    margin-left: 100px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    line-height: 25px;
+  }
+
+  .geocoder {
+    margin-left: 30px;
   }
 
   .links {
+    margin-top: 15px;;
     text-align: center;
   }
 
@@ -216,7 +221,6 @@
   }
 
   /* form  */
-
 
 
 

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  get 'contact', to: 'pages#contact'
   get 'watchlists', to: 'watchlists#index'
+  get 'mytasks',    to: 'tasks#list_mytask'
+  get 'myposts',    to: 'tasks#list_mypost'
 
   resources :tasks
   resources :profiles

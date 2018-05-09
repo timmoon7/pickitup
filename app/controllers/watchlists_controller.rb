@@ -3,7 +3,7 @@ class WatchlistsController < ApplicationController
   # GET /watchlists
   # GET /watchlists.json
   def index
-    @watchlists = Watchlist.where(user: current_user).all
+    @watchlists = Watchlist.where(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
   end
 
   # POST /watchlists/1

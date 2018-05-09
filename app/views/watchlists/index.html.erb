@@ -37,7 +37,7 @@
           <td><%= watchlist.task.delivery_address %></td>
           <td><%= watchlist.task.pickup_address %></td>
           <td><%= watchlist.task.price_in_dollars %></td>
-          <td><%= watchlist.task.pickup_time %></td>
+          <td><%= watchlist.task.convert_timestamp(watchlist.task.pickup_time)  %></td>
           <td><%= watchlist.task.status %></td>
           <td>
             <% if watchlist.task.status == "accepted" %>
@@ -57,5 +57,5 @@
 
 <br>
 <div class="links">
-  <%= link_to 'Browse Tasks', tasks_path, class: "link_btn" %>
+  <%= will_paginate @watchlists %>
 </div>

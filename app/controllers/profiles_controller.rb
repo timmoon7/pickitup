@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
+    # Pagination with all profile
     @profiles = Profile.all
   end
 

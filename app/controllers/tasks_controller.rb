@@ -7,18 +7,31 @@ class TasksController < ApplicationController
     # @tasks = Task.all
 
     unless params[:tasks].present? 
-      @tasks = Task.all
+      @tasks = Task.order(id: :desc).paginate(:page => params[:page], per_page: 5)
     else
       unless params[:tasks][:main_category_id].blank?
         search_category = params[:tasks][:main_category_id]
-        @tasks = Task.where(main_category_id: search_category).all
+        @tasks = Task.where(main_category_id: search_category).order(id: :desc).paginate(:page => params[:page], per_page: 5)
       else
-        @tasks = Task.all
+        @tasks = Task.order(id: :desc).paginate(:page => params[:page], per_page: 5)
       end
       # @tasks = Task.search_by_name(search_task)      
     end
-
   end
+
+  # GET /myposts
+  # GET /myposts.json
+  def list_mypost
+    @tasks = Task.where(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+  end
+
+  # GET /mytasks
+  # GET /mytasks.json
+  def list_mytask
+    # only tasks driver is current_user and user is not current_user (default driver: current_user)
+    @tasks = Task.where(driver: current_user).where.not(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+  end
+
 
   # GET /tasks/1
   # GET /tasks/1.json

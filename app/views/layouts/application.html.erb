@@ -23,7 +23,9 @@
         
         <ul class="menu">
               <% if current_user && current_user.profile %>
-                  <li><%= link_to "Profile (#{current_user.profile.first_name})", edit_profile_path(current_user.profile) %></li> 
+                  <li><%= link_to "Profile (#{current_user.profile.first_name})", profile_path(current_user.profile) %></li> 
+                  <li><%= link_to 'My Posts', myposts_path %></li>
+                  <li><%= link_to 'My Tasks', mytasks_path %></li>                  
                   <li><%= link_to 'My Watchlist', watchlists_path %></li>
                   <li><%= link_to 'Sign-Out', destroy_user_session_path, method: :delete %></li>
               <% else %>
@@ -31,15 +33,15 @@
                   <li><%= link_to 'Sign Up', new_user_registration_path %></li>
               <% end %>
           </ul> 
-      </div>
+      </div>  <!-- end of header -->
     </nav>
    
     <div class="wrapper">
       <%= yield %>
     </div>
-
+       
     <div class="footer">
-        <small>Copyright &copy; PickItUp Pty. Ltd 2018, All rights reserved.</small>
+      <small>Copyright &copy; PickItUp Pty. Ltd 2018, All rights reserved.</small>
     </div>
 
   </body>

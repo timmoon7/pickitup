@@ -14,6 +14,10 @@ class Task < ApplicationRecord
     price.to_f / 100.0
   end
 
+  def convert_timestamp(date_time) 
+    date_time.strftime('%a, %d %b %Y %H:%M')
+  end
+
   # checking whether the user is watching the task or not (if yes, it will return true, otherwiese false)
   def watched?(userid, taskid)
     cnt = Watchlist.where(user_id: userid).where(task_id: taskid).count

@@ -26,10 +26,11 @@ If no one accepts the task, the user can modify the price for the delivery.
 * dotenv-rails
 * shrine
 * aws-sdk-s3
+* image_processing
 * geocoder
 * pundit
 * font-awesome
-* image_processing
+* will_paginate
 
 
 > Database creation: PostgreSQL 10
