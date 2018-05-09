@@ -59,8 +59,9 @@
           </td>
 
           <td><%= link_to 'Show', task %></td>
+      <% if user_signed_in? %>    
+
           <!-- To show Watch or Unwatch -->
- 
           <% if current_user != task.user %>
             <td>
               <% if task.watched?(current_user.id, task.id) %>
@@ -77,6 +78,7 @@
             <% end %>
           <% end %>
         </tr>
+      <% end %>   <!-- end of signed-in check -->       
       <% end %>  <!-- end of each loop -->
     </tbody>
   </table>

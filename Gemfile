@@ -16,6 +16,8 @@ gem 'country_select'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 # Pagination 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+# Payment
+gem 'stripe', '~> 3.13'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'

@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :assign]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :assign, :complete, :charge]
+  before_action :authenticate_user!, only: [:charge]
 
   # GET /tasks
   # GET /tasks.json
@@ -40,11 +41,52 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    if user_signed_in? 
+      @task = Task.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /tasks/1/edit
   def edit
+  end
+
+# POST /tasks/1/charge
+  def charge
+    if current_user.stripe_id.nil?
+      customer = Stripe::Customer.create(
+        :email => params[:stripeEmail],
+        :source  => params[:stripeToken]
+      )
+      current_user.stripe_id = customer.id
+      current_user.save!
+    end
+
+      charge = Stripe::Charge.create(
+        customer: customer.id,
+        amount: @task.price.to_i,
+        description: @task.description,
+        currency: 'AUD'
+      )
+
+      # current_user.charges << Charge.new(charge_id: charge.id)
+      flash[:notice] = 'Payment made!'
+
+      # change the task status to 'paid'
+      # @task.update_attributes(status: 'paid')
+
+      redirect_back fallback_location: tasks_path      
+
+
+      rescue Stripe::CardError => e
+        flash[:error] = e.message
+        redirect_back fallback_location: tasks_path
+
+      rescue ActiveRecord::RecordNotSaved => e
+        flash[:error] = e.message
+        redirect_back fallback_location: tasks_path
+
   end
 
   # POST /tasks
@@ -110,20 +152,6 @@ class TasksController < ApplicationController
   def assign
     respond_to do |format|
       if @task.update_attributes(status: 'assigned')
-        format.html { redirect_to tasks_url, notice: 'User assigned the task successfully.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /tasks/1
-  # PATCH/PUT /tasks/1.json
-  def paid
-    respond_to do |format|
-      if @task.update_attributes(status: 'paid')
         format.html { redirect_to tasks_url, notice: 'User assigned the task successfully.' }
         format.json { render :show, status: :ok, location: @task }
       else

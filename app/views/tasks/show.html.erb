@@ -59,7 +59,7 @@
 
     <p>
       <strong>Driver:</strong>
-      <% if @task.status == "accepted" %>
+      <% if @task.status != "posted" %>
         <%= @task.driver.profile.first_name %>
       <% end %>
     </p>
@@ -73,6 +73,7 @@
 
 <br>
 <div class="links">
+<% if user_signed_in? %>    
   <!-- Watch/Unwatch/Accept will be shown users not created the task -->
   <% if current_user != @task.user %>
     <% if @task.watched?(current_user.id, @task.id) %>
@@ -88,6 +89,8 @@
     <% end %>
 
   <% else %>  <!-- show only for the user created the task -->
+ 
+
      <!-- Accept button will be shown only the task status is posted -->
     <% if @task.status == "accepted" %>
       <%= link_to 'Assign', assign_task_path(@task), method: :patch, class: "link_btn" %>
@@ -101,6 +104,20 @@
       <%= link_to 'Edit', edit_task_path(@task), class: "link_btn" %>
     <% end %>
 
+  <!-- STRIPE payment -- >
+  <% unless @task.status == 'paid' || @task.status == 'completed' %>
+    <% if user_signed_in? %>
+      <%= render 'charge_form', task: @task, user: current_user %>
+    <% else %>
+        <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
+        <span style="display: block; min-height: 30px;">Pay with Card</span>
+      <% end %>
+    <% end %>
   <% end %>
-  <%= link_to 'Back', tasks_path, class: "link_btn" %>
-</div>
+    <!-- end of STRIPE -- >
+  <% end %>  <!-- end of else (current user is the client created the task) -->
+  
+  <% end %>  <!-- logged in check -->
+  <%= link_to 'Back', :back, class: "link_btn" %>
+
+</div>  <!-- end of div class links -->

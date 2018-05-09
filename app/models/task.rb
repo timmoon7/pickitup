@@ -18,6 +18,11 @@ class Task < ApplicationRecord
     date_time.strftime('%a, %d %b %Y %H:%M')
   end
 
+  def change_status(taskid)
+    task = Task.find(taskid)
+    task.update_attributes(status: 'paid')
+  end
+
   # checking whether the user is watching the task or not (if yes, it will return true, otherwiese false)
   def watched?(userid, taskid)
     cnt = Watchlist.where(user_id: userid).where(task_id: taskid).count

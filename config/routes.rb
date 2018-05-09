@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   get 'mytasks',    to: 'tasks#list_mytask'
   get 'myposts',    to: 'tasks#list_mypost'
 
-  resources :tasks
   resources :profiles
-
+  resources :tasks do
+    member do
+      # /tasks/1/charge 
+      post 'charge'
+    end
+  end
+  
   patch 'tasks/:id/accept',   to: 'tasks#accept',   as: 'accept_task'
   patch 'tasks/:id/assign',   to: 'tasks#assign',   as: 'assign_task'
-  patch 'tasks/:id/paid',     to: 'tasks#paid',     as: 'paid_task'
   patch 'tasks/:id/complete', to: 'tasks#complete', as: 'complete_task'
 
   post   'watchlists/:id',       to: 'watchlists#add',    as: 'add_watchlist'

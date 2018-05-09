@@ -6,9 +6,9 @@
 <table class="center">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Email</th>
-      <th>First name</th>
-      <th>Last name</th>
+      <th>Full Name</th>
       <th>Image data</th>
       <th>Phone</th>
       <th>Street address</th>
@@ -23,9 +23,9 @@
   <tbody>
     <% @profiles.each do |profile| %>
       <tr>
+        <td><%= profile.user.id %></td>
         <td><%= profile.user.email %></td>
-        <td><%= profile.first_name %></td>
-        <td><%= profile.last_name %></td>
+        <td><%= profile.full_name %></td>
         <td>
         <% if profile.image.present? %>
             <%= image_tag profile.image_url(:thumb) %>
