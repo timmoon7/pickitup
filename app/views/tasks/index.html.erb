@@ -1,14 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Current Tasks</h1>
+<div class="row">
+  <div class="column">
+    <h1>Current Tasks</h1>
+  </div>
 
-<div class="search">
-  <%= form_with scope: :tasks, method: :get, local: true do |f| %>
-    <%= f.label :category_id %>:&nbsp;
-    <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
-    <%= f.submit :search, class: 'search_btn' %>
-  <% end %>
-</div>
+  <div class="column">
+    <div class="search">
+      <%= form_with scope: :tasks, method: :get, local: true do |f| %>
+        <%= f.label :category_id %>:&nbsp;
+        <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
+        <%= f.submit :search, class: 'search_btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>  <!-- end of row -->
 
 <% if @tasks.count > 0 %>
   <table class="center">
@@ -38,7 +44,7 @@
             <% if task.image.present? %>
               <%= image_tag task.image_url(:thumb) %>
             <% else %>
-              <%= image_tag "noimage.jpeg", class: "thumbimage" %>
+              <%= image_tag "nophoto.png", class: "thumbimage" %>
             <% end%>
           </td>        
           <td><%= task.delivery_address %></td>
