@@ -1,4 +1,3 @@
-
 <%= form_with(model: profile, local: true) do |form| %>
   <% if profile.errors.any? %>
     <div id="error_explanation">
@@ -12,57 +11,59 @@
     </div>
   <% end %>
 
-<article id="contact">
-  <div class="field">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
+  <div id="profile">
+    <div class="field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
+    <div class="field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name %>
+    </div>
 
-  <div class="field"> 
-    <%= form.label :image_data %>
-    <%= form.hidden_field :image, value: profile.cached_image_data %>
-    <%= form.file_field :image %>
-  </div>
+    <div class="field"> 
+      <%= form.label :image_data %>
+      <%= form.hidden_field :image, value: profile.cached_image_data %>
+      <%= form.file_field :image %>
+    </div>
 
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+    <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone %>
+    </div>
 
-  <div class="field">
-    <%= form.label :street_address %>
-    <%= form.text_field :street_address %>
-  </div>
+    <div class="field">
+      <%= form.label :street_address %>
+      <%= form.text_field :street_address %>
+    </div>
 
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
+    <div class="field">
+      <%= form.label :city %>
+      <%= form.text_field :city %>
+    </div>
 
-  <div class="field">
-    <%= form.label :state %>
-    <%= form.collection_select :state, State.all, :name, :name, prompt: true %>
-  </div>
+    <div class="field">
+      <%= form.label :state %>
+      <%= form.collection_select :state, State.all, :name, :name, prompt: true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :postcode %>
-    <%= form.text_field :postcode %>
-  </div>
+    <div class="field">
+      <%= form.label :postcode %>
+      <%= form.text_field :postcode %>
+    </div>
 
-  <div class="field">
-    <%= form.label :country_code %>
-       <%= form.country_select :country_code, priority_countries: ['AU', 'NZ', 'KR'] %>
-  </div>
+    <div class="field">
+      <%= form.label :country_code %>&nbsp;
+      <%= form.country_select :country_code, priority_countries: ['AU', 'NZ', 'KR'] %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-  
-  </div>
+    <br>
+    <div class="actions">
+      <%= form.submit 'CREATE', class: "profile_btn" do %>
+        <i class="fa fa-user-plus" aria-hidden="true"></i>
+        <% end %>
+    </div>
+   </div> 
 <% end %>
 

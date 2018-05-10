@@ -92,7 +92,7 @@
   <% else %>  <!-- show only for the user created the task -->
  
  <!-- STRIPE PAYMENT -->
- <% if @task.status != "paid" || @task.status != "completed" %>
+ <% if @task.status != "paid" && @task.status != "completed" %>
   <% if user_signed_in? %>
     <%= render 'charge_form', task: @task, user: current_user %>
   <% else %>
@@ -125,5 +125,5 @@
   
   <% end %>  <!-- logged in check -->
   <%= link_to 'Back', :back, class: "link_btn" %>
-
+  <%= link_to 'Home', root_path, class: "link_btn" %>
 </div>  <!-- end of div class links -->
