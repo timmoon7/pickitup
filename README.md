@@ -41,16 +41,16 @@ If no one accepts the task, the user can modify the price for the delivery.
 
 > User Stories:
 * [User stories on Trello](https://trello.com/b/FQwQmRaM/pickitup-user-stories)
-![User Stories](https://raw.githubusercontent.com/timmoon7/profile/master/assets/img/colors.png)
+![User Stories](https://raw.githubusercontent.com/timmoon7/pickitup/master/app/assets/images/Trello.png)
 
 > Flow-Chart:
-![Flowchart](https://raw.githubusercontent.com/timmoon7/profile/master/assets/img/colors.png)
+![Flowchart](https://raw.githubusercontent.com/timmoon7/pickitup/master/app/assets/images/Flow-chart.png)
 
 > ERD (Entity Relationship Diagram)
-![ERD](https://raw.githubusercontent.com/timmoon7/profile/master/assets/img/colors.png)
+![ERD](https://raw.githubusercontent.com/timmoon7/pickitup/master/app/assets/images/ERD.png)
 
 > Wireframes
-![Wireframs](https://raw.githubusercontent.com/timmoon7/profile/master/assets/img/colors.png)
+![Wireframs](https://raw.githubusercontent.com/timmoon7/pickitup/master/app/assets/images/Figma.png)
 
 # Features
 * Sing-up, Login & Logout
