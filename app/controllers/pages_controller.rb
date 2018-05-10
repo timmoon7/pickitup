@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   # before_action :authenticate_user!, except: [:home, :contact]
   
   def home
+    @tasks = Task.last(3)
   end
 
   def contact

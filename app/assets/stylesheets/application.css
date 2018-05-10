@@ -1,5 +1,5 @@
 * {
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
     margin: 0;
     padding: 0;
   }
@@ -14,7 +14,7 @@
     width: 100%;
     margin: 80px auto;
     line-height: 22px;
-    text-align: left;
+    text-align: center;
   }
   
   h1 {
@@ -123,10 +123,17 @@
   }
   
   .intro-image {
-    display: flex;
-    flex: auto;
-    justify-content: center;
+    /* display: flex;
+    /* flex: auto; */
+    /* justify-content: center; */
+    width: 100%;
+    height: auto;
   }
+
+  .responsive-img {
+    width: 100%;
+    height: auto;
+}
   
   ul li a {
     margin: 5px 0;
@@ -155,11 +162,26 @@
 
   /* Add some padding inside the card container */
   .person_info {
-      padding: 2px 30px;
+      padding: 5px 5px;
       color: #235B62;
-      font-size: 18px;
+      font-size: 15px;
       text-align: center;
   }
+
+    /* Card Home */
+    .card_home {
+      /* border: 1px solid #235B62; */
+      /* Add shadows to create the "card" effect */
+      box-shadow: 0 4px 8px 0 #235B62;
+      transition: 0.3s;
+      border-radius: 5px; 
+    }
+  
+    /* Add rounded corners to the top left and the top right corner of the image */
+    .card_home img {
+        border-radius: 7px 0 7px 0;
+        width: 100%;
+    }
 
   .thumbimage {
     width: 80px;
@@ -249,9 +271,40 @@
       justify-content: flex-end;
       color: #235B62;
     }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+  }
+
+  #section-a .content-text {
+      columns: 2;
+      column-gap: 2em;
+  }
+
+  .section-a .content-text p {
+      padding-top: 0;
+  }
+
+  .content-wrap, #section-b ul {
+    grid-column: 2/4;
+}
+
+.box, #main-footer div {
+    grid-column: span 2;
+}
+
+#section-b ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+  #section-b li {
+    width: 31%;
+  }
+
+
   } /* end media 768 */
-
-
 
 
 
@@ -377,4 +430,25 @@ cursor: pointer;
 border-radius: 2px;
 float: right;
 font-size: 1em;
+}
+
+
+/* Home 3 task images */
+#section-b {
+  padding-bottom: 2em 1em 1em;
+}
+
+#section-b ul {
+  list-style: none;
+  margin: 20px;
+  padding: 10px;
+}
+
+#section-b li {
+  margin-bottom: 1rem;
+  background: #fff;
+}
+
+h3.h3-red {
+  color: red;
 }

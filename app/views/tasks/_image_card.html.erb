@@ -1,16 +1,18 @@
-<div class="card bg-light mb-3 text-center" style="width:300px">
-    
-  <div class="card">
-    <% if @profile.image.present? %>
-      <%= image_tag @profile.image_url(:medium) %>
-    <% else %>
-      <%= image_tag "noimage.jpeg" %>
-    <% end%>
-    <div class="person_info">
-      <h4><b><%= @profile.full_name %></b></h4> 
-      <p><%= @profile.city %></p> 
-    </div>
-  </div>  <!-- end of card -->
+<section id="section-b" class="grid">
+    <ul>
+        <% @tasks.each do |task| %>
+            <li>
+                <div class="card_home">
+                    <%= link_to(task) do %>
+                        <%= image_tag task.image_url(:original) %>
+                    <% end %>
 
-
-</div>
+                    <div class="person_info">
+                        <h3><%= task.title %></h3>
+                        <h3 class="h3-red">$<%= task.price_in_dollars %></h3>
+                    </div>
+                </div>
+            </li>
+        <% end %>        
+    </ul>
+</section>

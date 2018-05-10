@@ -114,7 +114,7 @@
       <%= link_to 'Complete', complete_task_path(@task), method: :patch, class: "link_btn" %>
     <% end %>
 
-    <% if @task.status == "posted" %>
+    <% if @task.status = "posted" %>
       <%= link_to 'Edit', edit_task_path(@task), class: "link_btn" %>
     <% end %>
 
