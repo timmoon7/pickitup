@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :assign, :complete, :charge]
-  before_action :authenticate_user!, only: [:charge]
+  # before_action :authenticate_user!, only: [:charge]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /tasks
   # GET /tasks.json
@@ -41,11 +42,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    if user_signed_in? 
-      @task = Task.new
-    else
-      redirect_to new_user_session_path
-    end
+    @task = Task.new
   end
 
   # GET /tasks/1/edit

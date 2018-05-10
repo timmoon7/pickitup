@@ -1,5 +1,6 @@
 class WatchlistsController < ApplicationController
-  
+  before_action :authenticate_user!
+
   # GET /watchlists
   # GET /watchlists.json
   def index

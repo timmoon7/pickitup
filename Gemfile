@@ -8,9 +8,9 @@ end
 # File Upload
 gem 'aws-sdk-s3', '~> 1.9', '>= 1.9.1'
 gem 'shrine', '~> 2.10', '>= 2.10.1'
+
 #image processing
 gem 'image_processing', '~> 1.2'
-
 gem 'geocoder'
 gem 'country_select'
 gem 'devise', '~> 4.4', '>= 4.4.3'
@@ -18,6 +18,8 @@ gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Payment
 gem 'stripe', '~> 3.13'
+# Send/Receive Mailing
+gem 'mailgun-ruby', '~> 1.1', '>= 1.1.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'

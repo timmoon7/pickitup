@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'pages#home'
   get 'contact', to: 'pages#contact'
+  post '/contact', to:'pages#contact_email'
+  
   get 'watchlists', to: 'watchlists#index'
   get 'mytasks',    to: 'tasks#list_mytask'
   get 'myposts',    to: 'tasks#list_mypost'
