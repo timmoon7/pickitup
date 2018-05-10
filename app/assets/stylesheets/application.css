@@ -92,17 +92,18 @@
     color: #F8F8F8;
   }
 
-  .footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 0.7rem;
-    font-family: 'Roboto Condensed',sans-serif;
-    background-color: #235B62;
-    color: #C1FBFF;
-    text-align: center;
+  .intro-image {
+    /* display: flex;
+    /* flex: auto; */
+    /* justify-content: center; */
+    width: 100%;
+    height: auto;
   }
+
+  .responsive-img {
+    width: 100%;
+    height: auto;
+}
   
   .menu-icon-wrapper {
     cursor: pointer;
@@ -114,7 +115,18 @@
   .logo-icon {
     padding: 5px;
   }
-  
+
+  .menu-icon {
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo a {
+    text-indent: -10000px;
+    margin: 0 auto;
+  }
+
   .logo {
     max-width: 80px;
   }
@@ -139,28 +151,32 @@
     transition: all 0.3s ease;
   }
 
+  ul.menu {
+    display: none;
+  }
+
   nav div.header {
     display: flex;
   }
-  
-  .intro-image {
-    /* display: flex;
-    /* flex: auto; */
-    /* justify-content: center; */
-    width: 100%;
-    height: auto;
+
+  #menu-toggle {
+    display: none;
   }
 
-  .responsive-img {
-    width: 100%;
-    height: auto;
-}
+  /* Menu icon for mobile view */
+  #menu-toggle:checked + #menu {
+    max-height: 200px;
+  }
   
   ul li a {
     margin: 5px 0;
     border-right: solid 1px grey;
   }
 
+  ul li:last-child a {
+    border: none;
+  }
+  
   /* Card Avatar */
   .card {
     display: inline-block;
@@ -236,7 +252,6 @@
     font-size: 15px;
   }
 
-
   .info_column {
     margin-left: 100px;
     display: flex;
@@ -269,11 +284,17 @@
     color: #235B62;
   }
 
-  /* form  */
-
-
-
-  /* end of form */
+  .footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.7rem;
+    font-family: 'Roboto Condensed',sans-serif;
+    background-color: #235B62;
+    color: #C1FBFF;
+    text-align: center;
+  }
 
 
   /* Media Query */
@@ -289,9 +310,9 @@
     ul.menu {
       display: flex;
       flex: auto;
-      align-items: center;
+      /* align-items: center; */
       justify-content: flex-end;
-      color: #235B62;
+      /* color: #235B62; */
     }
 
     .grid {
