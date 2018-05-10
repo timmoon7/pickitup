@@ -73,6 +73,7 @@
 
 <br>
 <div class="links">
+
 <% if user_signed_in? %>    
   <!-- Watch/Unwatch/Accept will be shown users not created the task -->
   <% if current_user != @task.user %>
@@ -90,6 +91,17 @@
 
   <% else %>  <!-- show only for the user created the task -->
  
+ <!-- STRIPE PAYMENT -->
+<% if user_signed_in? %>
+  <%= render 'charge_form', task: @task, user: current_user %>
+<% else %>
+    <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
+    <span style="display: block; min-height: 30px;">Pay with Card</span>
+  <% end %>
+<% end %>
+<br>
+<!-- end of STRIPE -- >
+
 
      <!-- Accept button will be shown only the task status is posted -->
     <% if @task.status == "accepted" %>
@@ -105,16 +117,8 @@
     <% end %>
 
   <!-- STRIPE payment -- >
-  <% unless @task.status == 'paid' || @task.status == 'completed' %>
-    <% if user_signed_in? %>
-      <%= render 'charge_form', task: @task, user: current_user %>
-    <% else %>
-        <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
-        <span style="display: block; min-height: 30px;">Pay with Card</span>
-      <% end %>
-    <% end %>
-  <% end %>
-    <!-- end of STRIPE -- >
+
+  <!-- end of STRIPE -- >
   <% end %>  <!-- end of else (current user is the client created the task) -->
   
   <% end %>  <!-- logged in check -->

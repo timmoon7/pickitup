@@ -53,8 +53,8 @@ class TasksController < ApplicationController
   end
 
 # POST /tasks/1/charge
-  def charge
-    if current_user.stripe_id.nil?
+def charge
+    if current_user.stripe_id.blank?
       customer = Stripe::Customer.create(
         :email => params[:stripeEmail],
         :source  => params[:stripeToken]
@@ -64,18 +64,18 @@ class TasksController < ApplicationController
     end
 
       charge = Stripe::Charge.create(
-        customer: customer.id,
+        customer: current_user.stripe_id,
         amount: @task.price.to_i,
-        description: @task.description,
+        description: @task.title,
         currency: 'AUD'
       )
 
       # current_user.charges << Charge.new(charge_id: charge.id)
+      
+      # update the task status to 'paid' after the payment
+      @task.update_attributes(status: 'paid')
+
       flash[:notice] = 'Payment made!'
-
-      # change the task status to 'paid'
-      # @task.update_attributes(status: 'paid')
-
       redirect_back fallback_location: tasks_path      
 
 

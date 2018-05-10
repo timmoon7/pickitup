@@ -5,7 +5,6 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    
     <!--
     <label class="amount">
       <span>Amount: $<%= number_to_currency task.price_in_dollars %></span>
@@ -14,17 +13,13 @@
 
   </article>
 
-
-  
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-email='tim.moon7@gmail.com'
           data-name='<%= task.title %>'
           data-currency='AUD'
           data-amount=<%= task.price %>
-          data-locale="auto">
-  </script>
+          data-locale="auto"></script>
 <% end %>
 
 <!-- change the task status to 'paid' -->
-<% task.change_status(task.id) %>
