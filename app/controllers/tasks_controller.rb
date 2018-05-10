@@ -2,7 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :assign, :complete, :charge]
   # before_action :authenticate_user!, only: [:charge]
   before_action :authenticate_user!, except: [:index, :show]
-
+  after_action :verify_authorized
+  
   # GET /tasks
   # GET /tasks.json
   def index
@@ -19,12 +20,14 @@ class TasksController < ApplicationController
       end
       # @tasks = Task.search_by_name(search_task)      
     end
+    authorize @tasks
   end
 
   # GET /myposts
   # GET /myposts.json
   def list_mypost
     @tasks = Task.where(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+    authorize @tasks
   end
 
   # GET /mytasks
@@ -32,6 +35,7 @@ class TasksController < ApplicationController
   def list_mytask
     # only tasks driver is current_user and user is not current_user (default driver: current_user)
     @tasks = Task.where(driver: current_user).where.not(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+    authorize @tasks
   end
 
 
@@ -43,6 +47,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    authorize @task
   end
 
   # GET /tasks/1/edit
@@ -90,6 +95,8 @@ def charge
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    authorize @task
+
     @task.user = current_user
     @task.status = 'posted'
     @task.driver = current_user
@@ -170,6 +177,7 @@ def charge
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+    authorize @task
   end
 
 
@@ -177,6 +185,7 @@ def charge
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+      authorize @task
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

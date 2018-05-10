@@ -92,11 +92,13 @@
   <% else %>  <!-- show only for the user created the task -->
  
  <!-- STRIPE PAYMENT -->
-<% if user_signed_in? %>
-  <%= render 'charge_form', task: @task, user: current_user %>
-<% else %>
-    <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
-    <span style="display: block; min-height: 30px;">Pay with Card</span>
+ <% if @task.status != "paid" || @task.status != "completed" %>
+  <% if user_signed_in? %>
+    <%= render 'charge_form', task: @task, user: current_user %>
+  <% else %>
+      <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
+      <span style="display: block; min-height: 30px;">Pay with Card</span>
+    <% end %>
   <% end %>
 <% end %>
 <br>

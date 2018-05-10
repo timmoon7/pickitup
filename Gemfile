@@ -6,13 +6,17 @@ git_source(:github) do |repo_name|
 end
 
 # File Upload
-gem 'aws-sdk-s3', '~> 1.9', '>= 1.9.1'
 gem 'shrine', '~> 2.10', '>= 2.10.1'
+gem 'aws-sdk-s3', '~> 1.9', '>= 1.9.1'
 
 #image processing
 gem 'image_processing', '~> 1.2'
+# Authorization
+gem 'pundit', '~> 1.1'
+# Map
 gem 'geocoder'
 gem 'country_select'
+# Authentication
 gem 'devise', '~> 4.4', '>= 4.4.3'
 # Pagination 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
