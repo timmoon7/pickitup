@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
   
   patch 'tasks/:id/accept',   to: 'tasks#accept',   as: 'accept_task'
+  patch 'tasks/:id/decline',  to: 'tasks#decline',  as: 'decline_task'
   patch 'tasks/:id/assign',   to: 'tasks#assign',   as: 'assign_task'
   patch 'tasks/:id/complete', to: 'tasks#complete', as: 'complete_task'
 

@@ -465,16 +465,18 @@ font-size: 12px;
 .box input[type="submit"]
 {
 border: none;
-outline: none;
-color: #F8F8F8;
+color: #D7F7FB;
 background: #235B62;
-padding: 10px 20px;
 cursor: pointer;
-border-radius: 2px;
 float: right;
 font-size: 1em;
+font-weight: bold;
 }
 
+.box input[type="submit"]:hover {
+  background-color: #D7F7FB;
+  color: #235B62;
+}
 
 /* Home 3 task images */
 #section-b {

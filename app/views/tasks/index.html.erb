@@ -53,7 +53,7 @@
           <td><%= task.convert_timestamp(task.pickup_time) %></td>
           <td><%= task.status %></td>
           <td>
-            <% if task.status != "posted" %>
+            <% if task.status != "posted" && task.status != "declined" %>
               <%= task.driver.profile.first_name %>
             <% end %>
           </td>
@@ -74,7 +74,7 @@
           <% else %>  <!-- edit link only for the user created the task -->
              <% if task.status == "posted" %>
               <td><%= link_to 'Edit', edit_task_path(task) %></td>
-              <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Delete', task, method: :delete, data: { confirm: 'Are you sure to delete?' } %></td>
             <% end %>
           <% end %>
         </tr>

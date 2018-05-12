@@ -27,6 +27,16 @@ class TaskPolicy < ApplicationPolicy
         user.present? && user.id != task.user_id
     end
 
+    def decline?
+        # only can destory the user is the person created the task
+        update?
+    end
+
+    def assign?
+        # only can destory the user is the person created the task
+        update?
+    end
+
     # only can complete the user is the person created the task
     def complete?
         update?

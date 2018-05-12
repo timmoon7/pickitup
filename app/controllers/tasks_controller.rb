@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :assign, :complete, :charge]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :accept, :decline, :assign, :complete, :charge]
   # before_action :authenticate_user!, only: [:charge]
   before_action :authenticate_user!, except: [:index, :show]
   after_action :verify_authorized
@@ -26,7 +26,7 @@ class TasksController < ApplicationController
   # GET /myposts
   # GET /myposts.json
   def list_mypost
-    @tasks = Task.where(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+    @tasks = Task.where(user: current_user).order(updated_at: :desc).paginate(:page => params[:page], per_page: 5)
     authorize @tasks
   end
 
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   # GET /mytasks.json
   def list_mytask
     # only tasks driver is current_user and user is not current_user (default driver: current_user)
-    @tasks = Task.where(driver: current_user).where.not(user: current_user).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+    @tasks = Task.where(driver: current_user).where.not(user: current_user).order(updated_at: :desc).paginate(:page => params[:page], per_page: 5)
     authorize @tasks
   end
 
@@ -143,6 +143,20 @@ def charge
     respond_to do |format|
       if @task.update_attributes(status: 'accepted', driver_id: driver)
         format.html { redirect_to tasks_url, notice: 'Driver accepted the task successfully.' }
+        format.json { render :show, status: :ok, location: @task }
+      else
+        format.html { render :edit }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /tasks/1
+  # PATCH/PUT /tasks/1.json
+  def decline
+    respond_to do |format|
+      if @task.update_attributes(status: 'declined')
+        format.html { redirect_to tasks_url, notice: 'User declined the task successfully.' }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }

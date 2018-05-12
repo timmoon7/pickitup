@@ -59,7 +59,7 @@
 
     <p>
       <strong>Driver:</strong>
-      <% if @task.status != "posted" %>
+      <% if @task.status != "posted" && @task.status != "declined" %>
         <%= @task.driver.profile.first_name %>
       <% end %>
     </p>
@@ -85,45 +85,48 @@
     <% end %>
 
     <!-- Accept button will be shown only the task status is posted -->
-    <% if @task.status == "posted" %>
+    <% if @task.status == "posted" || @task.status == "declined" %>
       <%= link_to 'Accept', accept_task_path(@task), method: :patch, class: "link_btn" %>
     <% end %>
 
   <% else %>  <!-- show only for the user created the task -->
  
- <!-- STRIPE PAYMENT -->
- <% if @task.status != "paid" && @task.status != "completed" %>
-  <% if user_signed_in? %>
-    <%= render 'charge_form', task: @task, user: current_user %>
-  <% else %>
-      <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
-      <span style="display: block; min-height: 30px;">Pay with Card</span>
+    <!-- STRIPE PAYMENT -->
+    <% if @task.status != "paid" && @task.status != "completed" %>
+      <% if user_signed_in? %>
+        <%= render 'charge_form', task: @task, user: current_user %>
+      <% else %>
+          <%= link_to new_user_registration_path, class: 'stripe-button-el' do %>
+          <span style="display: block; min-height: 30px;">Pay with Card</span>
+          <% end %>
+      <% end %>
     <% end %>
-  <% end %>
-<% end %>
-<br>
-<!-- end of STRIPE -- >
+    <br>
+    <!-- end of STRIPE -- >
 
+     <!-- Edit button will be shown only the task status is posted -->
+    <% if @task.status == "posted" || @task.status == "declined" %>
+      <%= link_to 'Edit',   edit_task_path(@task), class: "link_btn" %>
+      <%= link_to 'Delete', @task, method: :delete, data: { confirm: 'Are you sure to delete?' }, class: "link_btn" %>
+    <% end %>
 
-     <!-- Accept button will be shown only the task status is posted -->
+     <!-- Assign button will be shown only the task status is accepted -->
     <% if @task.status == "accepted" %>
-      <%= link_to 'Assign', assign_task_path(@task), method: :patch, class: "link_btn" %>
+      <%= link_to 'Assign',  assign_task_path(@task), method: :patch, class: "link_btn" %>
+      <%= link_to 'Decline', decline_task_path(@task), method: :patch, class: "link_btn" %>
+
     <% end %>
-    
+
+     <!-- Complete button will be shown only the task status is paid -->    
     <% if @task.status == "paid" %>
       <%= link_to 'Complete', complete_task_path(@task), method: :patch, class: "link_btn" %>
     <% end %>
 
-    <% if @task.status == "posted" %>
-      <%= link_to 'Edit', edit_task_path(@task), class: "link_btn" %>
-    <% end %>
 
-  <!-- STRIPE payment -- >
 
-  <!-- end of STRIPE -- >
   <% end %>  <!-- end of else (current user is the client created the task) -->
   
-  <% end %>  <!-- logged in check -->
-  <%= link_to 'Back', :back, class: "link_btn" %>
-  <%= link_to 'Home', root_path, class: "link_btn" %>
+<% end %>  <!-- end of logged-in check -->
+<%= link_to 'Back', :back, class: "link_btn" %>
+<%= link_to 'Home', root_path, class: "link_btn" %>
 </div>  <!-- end of div class links -->
