@@ -16,7 +16,7 @@
       <th>State</th>
       <th>Postcode</th>
       <th>Country code</th>
-      <th colspan="2"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -44,6 +44,12 @@
           <!-- only profile can be edited by oneself -->
           <% if current_user == profile.user %>
             <%= link_to 'Edit', edit_profile_path(profile) %>
+          <% end %>
+        </td>
+        <td>
+          <!-- only admin can delete profiles -->
+          <% if current_user.is_admin == true %> 
+            <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </td>
       </tr>
