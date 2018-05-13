@@ -59,6 +59,10 @@
 
 <br>
 <div class="links">
-  <%= link_to 'Edit', edit_profile_path(@profile), class: "link_btn" %>
+  <!-- only profile can be edited by oneself -->
+  <% if current_user == @profile.user %>
+    <%= link_to 'Edit', edit_profile_path(@profile), class: "link_btn" %>
+  <% end %>
+  <%= link_to 'Back', :back, class: "link_btn" %>
   <%= link_to 'Home', root_path, class: "link_btn" %>
 </div>

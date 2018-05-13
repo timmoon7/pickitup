@@ -16,7 +16,7 @@
       <th>State</th>
       <th>Postcode</th>
       <th>Country code</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -40,8 +40,12 @@
         <td><%= profile.postcode %></td>
         <td><%= profile.country_code %></td>
         <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <!-- only profile can be edited by oneself -->
+          <% if current_user == profile.user %>
+            <%= link_to 'Edit', edit_profile_path(profile) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -49,8 +53,5 @@
 
 <br>
 <div class="links">
-  <%= will_paginate @tasks %>
+  <%= will_paginate @profiles %>
 </div>
-
-
-
