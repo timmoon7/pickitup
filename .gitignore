@@ -20,4 +20,3 @@
 
 .env
 .env.development
-/app/helpers/application_helper.rb
