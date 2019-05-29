@@ -65,10 +65,12 @@
     </p>
   </div>  <!-- end of info_column -->
 
-  <!-- GeoCoding (Google Map Api ) -->
+<% comment do %>
   <div class="geocoder">
-    <%= google_map_image_tag(@task.user.profile) %>
+    <%=# google_map_image_tag(@task.user.profile) %>
   </div>
+<% comment end %>
+
 
 </div>  <!-- end of row -->
 
