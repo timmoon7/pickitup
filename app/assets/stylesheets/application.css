@@ -183,6 +183,8 @@ ul li:last-child a {
   border: none;
 }
 
+/* SignUp, Login form */
+
 /* Card Avatar */
 .card {
   display: inline-block;
@@ -497,7 +499,7 @@ h3.h3-red {
 
 /* Form  */
 .form-wrapper {
-  background-color: #6aa1a5;
+  background-color: #afafaf;
   list-style-type: none;
   padding: 0 20px;
   border-radius: 10px;
@@ -510,28 +512,32 @@ h3.h3-red {
   padding: 0.5em;
 }
 .form-row > label {
-  padding: 0.5em 1em 0.5em 0;
+  padding: 0.5em 0;
   flex: 1;
   text-align: left;
 }
 .form-row > input,
-.form-row > select,
+/* .form-row > select, */
 .form-row > textarea {
   flex: 2;
-}
-.form-row > input {
   padding: 0.5em;
+}
+/* .form-row > input {
+  padding: 0.5em;
+} */
+.form-row > select {
+  flex: 2.05;
 }
 .form-row > textarea {
   min-height: 9em;
 }
-.actions {
+.form-action {
   text-align: right;
   padding-bottom: 10px;
 }
 
 @media (min-width: 991px) {
   .form-wrapper {
-    margin: 0 200px;
+    margin: 0 250px;
   }
 }

@@ -11,55 +11,52 @@
     </div>
   <% end %>
 
+  <div class="form-wrapper">
+    <div class="form-row">
+      <%= form.label :main_category_id %>
+      <%= form.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
+    </div>
 
-<div class="form-wrapper">
-  <div class="form-row">
-    <%= form.label :main_category_id %>
-    <%= form.collection_select :main_category_id, MainCategory.all, :id, :name, prompt: true %>
-  </div>
+    <div class="form-row">
+      <%= form.label :title %>
+      <%= form.text_field :title, id: :task_title %>
+    </div>
 
-  <div class="form-row">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :task_title %>
-  </div>
+    <div class="form-row">
+      <%= form.label :description %>
+      <%= form.text_area :body, id: :task_body %>
+    </div>
 
-  <div class="form-row">
-    <%= form.label :description %>
-    <%= form.text_area :body, id: :task_body %>
-  </div>
+    <div class="form-row"> 
+      <%= form.label :image_data %>
+      <%= form.hidden_field :image, value: task.cached_image_data %>
+      <%= form.file_field :image, id: :task_image_data %>
+    </div>
 
-  <div class="form-row"> 
-    <%= form.label :image_data %>
-    <%= form.hidden_field :image, value: task.cached_image_data %>
-    <%= form.file_field :image, id: :task_image_data %>
-  </div>
+    <div class="form-row">
+      <%= form.label :delivery_address %>
+      <%= form.text_field :delivery_address, id: :task_delivery_address %>
+    </div>
 
-  <div class="form-row">
-    <%= form.label :delivery_address %>
-    <%= form.text_field :delivery_address, id: :task_delivery_address %>
-  </div>
+    <div class="form-row">
+      <%= form.label :pickup_address %>
+      <%= form.text_field :pickup_address, id: :task_pickup_address %>
+    </div>
 
-  <div class="form-row">
-    <%= form.label :pickup_address %>
-    <%= form.text_field :pickup_address, id: :task_pickup_address %>
-  </div>
+    <div class="form-row">
+      <%= form.label :price %>
+      <%= form.number_field :price, id: :task_price %>
+    </div>
 
-  <div class="form-row">
-    <%= form.label :price %>
-    <%= form.number_field :price, id: :task_price %>
-  </div>
+    <div class="form-row">
+      <%= form.label :pickup_time %>
+      <%= form.datetime_select :pickup_time, id: :task_pickup_time, start_hour: 07, end_hour: 20, minute_step: 10, class: "pickup-time" %>
+    </div>
 
-  <div class="form-row">
-    <%= form.label :pickup_time %>
-    <%= form.datetime_select :pickup_time, id: :task_pickup_time, start_hour: 07, end_hour: 20, minute_step: 10, class: "pickup-time" %>
-  </div>
+    <br>
+    <div class="form-action">
+      <%= form.submit  class: "profile_btn" %>
+    </div>
 
-  <br>
-  <div class="actions">
-    <%= form.submit  class: "profile_btn" %>
   </div>
 <% end %>
-
-
-
-</div>
