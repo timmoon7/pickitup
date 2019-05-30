@@ -4,12 +4,13 @@
 <br>
 
 <div class="row">
- <% if @task.image.present? %>
-    <%= image_tag @task.image_url(:medium) %>
-  <% else %>
-    <%= image_tag "nophoto.png" %>
-  <% end%>
-
+  <div class="info_column">
+  <% if @task.image.present? %>
+      <%= image_tag @task.image_url(:medium) %>
+    <% else %>
+      <%= image_tag "nophoto.png" %>
+    <% end%>
+  </div>
 
   <div class="info_column">
     <p>
