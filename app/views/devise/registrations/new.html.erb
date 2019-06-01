@@ -10,19 +10,13 @@
       </div>
 
       <div class="form-row">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off", placeholder: "(6 characters minimum)" %>
-    </div>
-
-    <div class="form-row">
-      <% if @minimum_password_length %>
-        <em style="color:blue;">(Password: 6 characters minimum)</em>
-      <% end %>
-    </div>
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", placeholder: "(6 characters minimum)" %>
+      </div>
 
       <div class="form-row">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
 
     <div class="form-action">
