@@ -16,7 +16,7 @@ body {
 .wrapper {
   background: #fff;
   width: 100%;
-  margin: 80px auto;
+  margin: 80px auto 20px;
   line-height: 25px;
   text-align: center;
 
@@ -42,16 +42,18 @@ h2.nodata {
   line-height: 35px;
 }
 
-.profile_btn {
-  width: 120px;
+.action_btn {
+  min-width: 120px;
   height: 35px;
   color: #f8f8f8;
   border-radius: 7px;
   background: #235b62;
   font-size: 15px;
+  padding: 0.5em;
+  margin-right: 0.5em;
 }
 
-.profile_btn:hover {
+.action_btn:hover {
   background-color: #d7f7fb;
   color: #235b62;
 }
@@ -206,7 +208,7 @@ ul li:last-child a {
 }
 
 /* Add some padding inside the card container */
-.person_info {
+.card_info {
   padding: 5px 5px;
   color: #235b62;
   font-size: 15px;
@@ -282,8 +284,9 @@ ul li:last-child a {
 }
 
 .link_btn {
-  background-color: #235b62;
-  color: white;
+  background-color: #fff;
+  color: #805739;
+  border: 1px solid #805739;
   border-radius: 7px;
   padding: 0.4em 0.8em;
   text-decoration: none;
@@ -292,8 +295,8 @@ ul li:last-child a {
 }
 
 .link_btn:hover {
-  background-color: #d7f7fb;
-  color: #235b62;
+  background-color: #d2c8c1;
+  color: #000;
 }
 
 .footer {
@@ -499,9 +502,10 @@ h3.h3-red {
 
 /* Form  */
 .form-wrapper {
-  background-color: #afafaf;
+  background-color: #c4cace;
   list-style-type: none;
-  padding: 0 20px;
+  margin: 10px;
+  padding: 10px 20px 0;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -510,6 +514,11 @@ h3.h3-red {
   display: flex;
   justify-content: flex-end;
   padding: 0.5em;
+  box-sizing: border-box;
+}
+.form-devise-row > label {
+  padding: 0.5em 0;
+  text-align: left;
 }
 .form-row > label {
   padding: 0.5em 0;
@@ -517,16 +526,10 @@ h3.h3-red {
   text-align: left;
 }
 .form-row > input,
-/* .form-row > select, */
+.form-row > select,
 .form-row > textarea {
   flex: 2;
   padding: 0.5em;
-}
-/* .form-row > input {
-  padding: 0.5em;
-} */
-.form-row > select {
-  flex: 2.05;
 }
 .form-row > textarea {
   min-height: 9em;

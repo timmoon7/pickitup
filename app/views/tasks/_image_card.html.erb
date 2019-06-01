@@ -7,9 +7,9 @@
                         <%= image_tag task.image_url(:original) %>
                     <% end %>
 
-                    <div class="person_info">
+                    <div class="card_info">
                         <h3><%= task.title %></h3>
-                        <h3 class="h3-red">$<%= task.price_in_dollars %></h3>
+                        <h3 class="h3-red"><%= number_to_currency(task.price_in_dollars) %></h3>
                     </div>
                 </div>
             </li>
