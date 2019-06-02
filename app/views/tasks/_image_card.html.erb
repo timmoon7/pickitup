@@ -5,7 +5,11 @@
                 <div class="card_home">
                     <div class="card_img">
                         <%= link_to(task) do %>
-                            <%= image_tag task.image_url(:original) %>
+                            <% if task.image.present? %>
+                                <%= image_tag task.image_url(:original) %>
+                            <% else %>
+                                <%= image_tag "nophoto.png" %>
+                            <% end %>
                         <% end %>
                     </div>
 
