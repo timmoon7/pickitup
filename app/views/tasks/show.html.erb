@@ -45,7 +45,7 @@
 
     <p>
       <strong>Price:</strong>
-      <%= @task.price_in_dollars %>
+      <%= number_to_currency(@task.price_in_dollars) %>
     </p>
 
     <p>

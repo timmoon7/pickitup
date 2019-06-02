@@ -34,7 +34,7 @@
           </td>        
           <td><%= task.delivery_address %></td>
           <td><%= task.pickup_address %></td>
-          <td>$<%= task.price_in_dollars %></td>
+          <td><%= number_to_currency(task.price_in_dollars) %></td>
           <td><%= task.convert_timestamp(task.pickup_time) %></td>
           <td><%= task.status %></td>
           <td><%= link_to 'Show', task %></td>
