@@ -3,9 +3,11 @@
         <% @tasks.each do |task| %>
             <li>
                 <div class="card_home">
-                    <%= link_to(task) do %>
-                        <%= image_tag task.image_url(:original) %>
-                    <% end %>
+                    <div class="card_img">
+                        <%= link_to(task) do %>
+                            <%= image_tag task.image_url(:original) %>
+                        <% end %>
+                    </div>
 
                     <div class="card_info">
                         <h3><%= task.title %></h3>

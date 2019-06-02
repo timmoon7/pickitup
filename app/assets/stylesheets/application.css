@@ -101,9 +101,6 @@ li a:hover {
 }
 
 .intro-image {
-  /* display: flex;
-    /* flex: auto; */
-  /* justify-content: center; */
   width: 100%;
   height: auto;
 }
@@ -227,7 +224,7 @@ ul li:last-child a {
 /* Add rounded corners to the top left and the top right corner of the image */
 .card_home img {
   border-radius: 7px 0 7px 0;
-  width: 100%;
+  max-width: 100%;
 }
 
 .thumbimage {
@@ -356,6 +353,11 @@ ul li:last-child a {
 
   #section-b li {
     width: 31%;
+  }
+
+  #section-b .card_img {
+    max-width: 100%;
+    height: 220px;
   }
 } /* end media 768 */
 
@@ -493,7 +495,14 @@ ul li:last-child a {
 
 #section-b li {
   margin-bottom: 1rem;
-  background: #fff;
+}
+
+#section-b li a {
+  border: none;
+}
+
+#section-b li a:hover {
+  background-color: #d3d3d3;
 }
 
 h3.h3-red {
