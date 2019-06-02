@@ -7,14 +7,12 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    # @tasks = Task.all
-
     unless params[:tasks].present? 
       @tasks = Task.order(id: :desc).paginate(:page => params[:page], per_page: 5)
     else
       unless params[:tasks][:main_category_id].blank?
-        search_category = params[:tasks][:main_category_id]
-        @tasks = Task.where(main_category_id: search_category).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+        @search_category = params[:tasks][:main_category_id]
+        @tasks = Task.where(main_category_id: @search_category).order(id: :desc).paginate(:page => params[:page], per_page: 5)
       else
         @tasks = Task.order(id: :desc).paginate(:page => params[:page], per_page: 5)
       end
