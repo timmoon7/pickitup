@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 20180513061014) do
     t.integer "price"
     t.datetime "pickup_time"
     t.string "status"
+    t.bigint "driver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image_data"
-    t.bigint "driver_id"
     t.index ["driver_id"], name: "index_tasks_on_driver_id"
     t.index ["main_category_id"], name: "index_tasks_on_main_category_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"

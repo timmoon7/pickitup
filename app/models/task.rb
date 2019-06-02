@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   belongs_to :driver, class_name: 'User'
   belongs_to :user
   belongs_to :main_category
+  has_many :watchlists, dependent: :destroy
 
     
   # def self.search_by_name(search)

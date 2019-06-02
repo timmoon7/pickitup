@@ -28,7 +28,7 @@
             <% if task.image.present? %>
               <%= image_tag task.image_url(:thumb) %>
             <% else %>
-              <%= image_tag "noimage.jpeg", class: "thumbimage" %>
+              <%= image_tag "nophoto.png", class: "thumbimage" %>
             <% end%>
           </td>        
           <td><%= task.delivery_address %></td>

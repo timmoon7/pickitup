@@ -31,7 +31,7 @@
             <% if watchlist.task.image.present? %>
               <%= image_tag watchlist.task.image_url(:thumb) %>
             <% else %>
-              <%= image_tag "noimage.jpeg", class: "thumbimage" %>
+              <%= image_tag "nophoto.png", class: "thumbimage" %>
             <% end%>
           </td>        
           <td><%= watchlist.task.delivery_address %></td>
