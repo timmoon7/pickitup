@@ -1,19 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-<!--
-  <div class="column">
-    <h1>Current Tasks</h1>
-  </div>
-  -->
-
   <div class="column">
     <h1>Current Tasks</h1><br />
     <div class="search">
       <%= form_with scope: :tasks, method: :get, local: true do |f| %>
-        <%= f.label :category_id %>:&nbsp;
-        <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, include_blank: '(All)', prompt: true, selected: @search_category %>
-        <%= f.submit :filter, class: 'search_btn' %>
+        <%= f.label :category_id, "Filter Category:  " %>
+        <%= f.collection_select :main_category_id, MainCategory.all, :id, :name, {include_blank: '(All)', prompt: true, selected: @search_category}, {onchange: "this.form.submit();"} %>
+        <%#= f.submit :filter, class: 'search_btn' %>
       <% end %>
     </div>
   </div>
@@ -25,12 +19,12 @@
       <tr>
         <th>Client</th>
         <th>Category</th>
-        <th>Title</th>
+        <th><%= sortable "title" %></th>
         <th>Image</th>      
         <th>Delivery addr</th>
         <th>Pickup addr</th>
-        <th>Price</th>
-        <th>Pickup time</th>
+        <th><%= sortable "price" %></th>
+        <th><%= sortable "pickup_time", "Pickup Time" %></th>
         <th>Status</th>
         <th>Driver</th>
         <th colspan="3">Menus</th>

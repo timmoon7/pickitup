@@ -70,6 +70,14 @@ th {
   height: 40px;
 }
 
+table.center a {
+  color: #000;
+}
+
+table.center a:hover {
+  color: #235b62;
+}
+
 /* menu base styles */
 nav {
   background: #f8f8f8;
@@ -241,13 +249,14 @@ ul li:last-child a {
 }
 
 /* .column {
-  float: left;
+  float: right;
   width: 50%;
 } */
 
 .search {
   background-color: #c4cace;
   border: 1px solid #235b62;
+  /* margin-left: 2em; */
   padding: 0.3em 1em;
   max-width: 100%;
   height: auto;
@@ -258,7 +267,7 @@ ul li:last-child a {
   border: 1px solid #235b62;
   width: 80px;
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   transition: 0.3s;
   border-radius: 5px;
 }

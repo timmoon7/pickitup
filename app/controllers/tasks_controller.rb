@@ -3,18 +3,19 @@ class TasksController < ApplicationController
   # before_action :authenticate_user!, only: [:charge]
   before_action :authenticate_user!, except: [:index, :show]
   after_action :verify_authorized
+  helper_method :sort_column, :sort_direction
   
   # GET /tasks
   # GET /tasks.json
   def index
     unless params[:tasks].present? 
-      @tasks = Task.order(id: :desc).paginate(:page => params[:page], per_page: 5)
+      @tasks = Task.order(sort_column + ' ' + sort_direction).paginate(:page => params[:page], per_page: 5)
     else
       unless params[:tasks][:main_category_id].blank?
         @search_category = params[:tasks][:main_category_id]
-        @tasks = Task.where(main_category_id: @search_category).order(id: :desc).paginate(:page => params[:page], per_page: 5)
+        @tasks = Task.where(main_category_id: @search_category).order(sort_column + ' ' + sort_direction).paginate(:page => params[:page], per_page: 5)
       else
-        @tasks = Task.order(id: :desc).paginate(:page => params[:page], per_page: 5)
+        @tasks = Task.order(sort_column + ' ' + sort_direction).paginate(:page => params[:page], per_page: 5)
       end
       # @tasks = Task.search_by_name(search_task)      
     end
@@ -195,6 +196,14 @@ def charge
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def sort_column
+      Task.column_names.include?(params[:sort]) ? params[:sort] : "id"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
+    end
+
     def set_task
       @task = Task.find(params[:id])
       authorize @task
