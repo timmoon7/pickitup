@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def contact_email
-    user_info = {user: current_user, name: email_params[:name], email1: email_params[:email1], message: email_params[:message]}
+    user_info = {user: current_user, name: email_params[:name], email: email_params[:email], message: email_params[:message]}
     ContactMailer.send_contact_email(user_info).deliver_now
     # render :contact
     redirect_to root_path
@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
   private
   def email_params
-    params.require(:contact).permit(:name, :email1, :message)
+    params.require(:contact).permit(:name, :email, :message)
   end
 
 end

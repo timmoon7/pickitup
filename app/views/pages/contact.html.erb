@@ -11,11 +11,11 @@
                 
                 <div class="inputBox">
                     <% if current_user %>
-                        <%= f.text_field :email1, value: current_user.email, class: 'email' %>
+                        <%= f.email_field :email, value: current_user.email, class: 'email' %>
                     <% else %>
-                        <%= f.text_field :email1, class: 'email' %>
+                        <%= f.email_field :email, class: 'email' %>
                     <% end %>
-                    <%= f.label :email %>
+                    <%= f.label :email, "My Email" %>
                 </div>    
 
                 <div class="inputBox">

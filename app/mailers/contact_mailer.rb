@@ -5,6 +5,7 @@ class ContactMailer < ApplicationMailer
         email = ENV.fetch('SYSTEM_EMAIL')
         @user = user_info[:user]   #current user object
         @name = user_info[:name]
+        @email = user_info[:email]
         @message = user_info[:message]    
         date = Time.now.strftime("%A, %d/%B/%Y")
         subject = "New user message #{date}"
