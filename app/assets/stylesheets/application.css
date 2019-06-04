@@ -233,6 +233,7 @@ ul li:last-child a {
 .card_home img {
   border-radius: 7px 0 7px 0;
   max-width: 100%;
+  height: auto;
 }
 
 .thumbimage {
@@ -369,12 +370,19 @@ ul li:last-child a {
   }
 
   #section-b li {
-    width: 31%;
+    width: 32%;
   }
 
-  #section-b .card_img {
+  #section-b .card_home .card_img {
+    display: flex;
+    align-items: center;
     max-width: 100%;
     height: 220px;
+  }
+
+  .card_img img {
+    width: 100%;
+    height: 180px;
   }
 } /* end media 768 */
 
