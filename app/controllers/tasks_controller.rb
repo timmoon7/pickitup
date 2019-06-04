@@ -8,11 +8,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    unless params[:tasks].present? 
+    if !params[:tasks].present? && params[:search_category].blank?
       @tasks = Task.order(sort_column + ' ' + sort_direction).paginate(:page => params[:page], per_page: 5)
     else
-      unless params[:tasks][:main_category_id].blank?
-        @search_category = params[:tasks][:main_category_id]
+      unless category_selected.blank?
+        @search_category = category_selected
         @tasks = Task.where(main_category_id: @search_category).order(sort_column + ' ' + sort_direction).paginate(:page => params[:page], per_page: 5)
       else
         @tasks = Task.order(sort_column + ' ' + sort_direction).paginate(:page => params[:page], per_page: 5)
@@ -202,6 +202,10 @@ def charge
     
     def sort_direction
       %w[asc desc].include?(params[:direction]) ?  params[:direction] : "desc"
+    end
+
+    def category_selected
+      params[:search_category] ? params[:search_category] : params[:tasks][:main_category_id]
     end
 
     def set_task

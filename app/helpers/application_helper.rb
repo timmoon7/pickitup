@@ -1,8 +1,8 @@
 module ApplicationHelper
-    def sortable(column, title = nil)
+    def sortable(column, title = nil, search_category)
         title ||= column.titleize
         direction = (column == sort_column && sort_direction == "asc") ? "desc" : "asc"
-        link_to title, {sort: column, direction: direction}
+        link_to title, {sort: column, direction: direction, search_category: search_category}
     end
 
     def google_map_image_tag(profile)  
