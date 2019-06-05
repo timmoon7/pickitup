@@ -1,9 +1,15 @@
 <h1>Editing Profile</h1>
 <br />
 
-<%= render 'form', profile: @profile %>
+<% if (current_user.is_admin ||  current_user == @profile.user) %> 
+    <%= render 'form', profile: @profile %>
+    
+    <div class="links">
+        <%= link_to 'Show', @profile, class: "link_btn" %>
+        <%= link_to 'Home', root_path, class: "link_btn" %>
+    </div>
+<% else %>
+    <h2>You do not have permission!</h2>
+<% end %>
 
-<div class="links">
-    <%= link_to 'Show', @profile, class: "link_btn" %>
-    <%= link_to 'Home', root_path, class: "link_btn" %>
-</div>
+

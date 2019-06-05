@@ -1,68 +1,75 @@
 <h1 align="center">Profile Details</h1>
-<br>
+<br />
 
-<div class="row">
-  <div class="card">
-    <% if @profile.image.present? %>
-      <%= image_tag @profile.image_url(:medium) %>
-    <% else %>
-      <%= image_tag "noimage.jpeg" %>
-    <% end%>
-    <div class="card_info">
-      <h4><b><%= @profile.full_name %></b></h4> 
-      <p><%= @profile.city %></p> 
-    </div>
-  </div>  <!-- end of card -->
+<% if (current_user.is_admin ||  current_user == @profile.user) %> 
+  <div class="row">
+    <div class="card">
+      <% if @profile.image.present? %>
+        <%= image_tag @profile.image_url(:medium) %>
+      <% else %>
+        <%= image_tag "noimage.jpeg" %>
+      <% end%>
+      <div class="card_info">
+        <h4><b><%= @profile.full_name %></b></h4> 
+        <p><%= @profile.city %></p> 
+      </div>
+    </div>  <!-- end of card -->
 
-  <div class="info_column">
-    <p>
-      <strong>Email:</strong>
-      <%= @profile.user.email %>
-    </p>
+    <div class="info_column">
+      <p>
+        <strong>Email:</strong>
+        <%= @profile.user.email %>
+      </p>
 
-    <p>
-      <strong>Name:</strong>
-      <%= @profile.full_name %>
-    </p>
+      <p>
+        <strong>Name:</strong>
+        <%= @profile.full_name %>
+      </p>
 
-    <p>
-      <strong>Phone:</strong>
-      <%= @profile.phone %>
-    </p>
+      <p>
+        <strong>Phone:</strong>
+        <%= @profile.phone %>
+      </p>
 
-    <p>
-      <strong>Street address:</strong>
-      <%= @profile.street_address %>
-    </p>
+      <p>
+        <strong>Street address:</strong>
+        <%= @profile.street_address %>
+      </p>
 
-    <p>
-      <strong>City:</strong>
-      <%= @profile.city %>
-    </p>
+      <p>
+        <strong>City:</strong>
+        <%= @profile.city %>
+      </p>
 
-    <p>
-      <strong>State:</strong>
-      <%= @profile.state %>
-    </p>
+      <p>
+        <strong>State:</strong>
+        <%= @profile.state %>
+      </p>
 
-    <p>
-      <strong>Postcode:</strong>
-      <%= @profile.postcode %>
-    </p>
+      <p>
+        <strong>Postcode:</strong>
+        <%= @profile.postcode %>
+      </p>
 
-    <p>
-      <strong>Country code:</strong>
-      <%= @profile.country_code %>
-    </p> 
-  </div>  <!-- end of info_column -->
-</div>  <!-- end of row -->
+      <p>
+        <strong>Country code:</strong>
+        <%= @profile.country_code %>
+      </p> 
+    </div>  <!-- end of info_column -->
+  </div>  <!-- end of row -->
 
-<br>
-<div class="links">
-  <!-- only profile can be edited by oneself -->
-  <% if current_user == @profile.user %>
-    <%= link_to 'Edit', edit_profile_path(@profile), class: "link_btn" %>
-  <% end %>
-  <%= link_to 'Back', :back, class: "link_btn" %>
-  <%= link_to 'Home', root_path, class: "link_btn" %>
-</div>
+  <br>
+  <div class="links">
+    <!-- only profile can be edited by oneself -->
+    <%# if current_user == @profile.user %>
+      <%= link_to 'Edit', edit_profile_path(@profile), class: "link_btn" %>
+    <%# end %>
+    <%= link_to 'Home', root_path, class: "link_btn" %>
+    <% if current_user.is_admin %>
+      <%= link_to 'Profiles', profiles_path, class: "link_btn" %>
+    <% end %>
+  </div>
+
+<% else %>
+  <h2>You do not have permission!</h2>
+<% end %>

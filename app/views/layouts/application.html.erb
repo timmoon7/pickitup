@@ -32,35 +32,34 @@
         </label>
 
         <ul class="menu">
-              <% if current_user && current_user.profile %>
-                  <li><%= link_to "Profile (#{current_user.profile.first_name})", profile_path(current_user.profile) %></li> 
-                  <li><%= link_to 'My Posts', myposts_path %></li>
-                  <li><%= link_to 'My Tasks', mytasks_path %></li>                  
-                  <li><%= link_to 'My Watchlist', watchlists_path %></li>
-                  <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                  <li><%= link_to 'Log In', new_user_session_path %></li>
-                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <% end %>
-              <li><%= link_to 'Contact', contact_path %></li> 
-          </ul> 
+          <% if current_user && current_user.profile %>
+            <li><%= link_to "Profile (#{current_user.profile.first_name})", profile_path(current_user.profile) %></li> 
+            <li><%= link_to 'My Posts', myposts_path %></li>
+            <li><%= link_to 'My Tasks', mytasks_path %></li>                  
+            <li><%= link_to 'My Watchlist', watchlists_path %></li>
+            <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <% end %>
+          <li><%= link_to 'Contact', contact_path %></li> 
+        </ul> 
       </div>  <!-- end of header -->
 
           <!-- Menu bar icon for mobile view -->
       <input type="checkbox" id="menu-toggle"/>
       <ul class="mobile-menu" id="menu">
-             <% if current_user && current_user.profile %>
-                  <li><%= link_to 'My Posts', myposts_path %></li>
-                  <li><%= link_to 'My Tasks', mytasks_path %></li>                  
-                  <li><%= link_to 'My Watchlist', watchlists_path %></li>
-                  <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                  <li><%= link_to 'Log In', new_user_session_path %></li>
-                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <% end %>
-              <li><%= link_to 'Contact', contact_path %></li> 
-          </ul> 
-
+        <% if current_user && current_user.profile %>
+          <li><%= link_to 'My Posts', myposts_path %></li>
+          <li><%= link_to 'My Tasks', mytasks_path %></li>                  
+          <li><%= link_to 'My Watchlist', watchlists_path %></li>
+          <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to 'Log In', new_user_session_path %></li>
+          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+        <% end %>
+        <li><%= link_to 'Contact', contact_path %></li> 
+      </ul> 
 
     </nav>
    
