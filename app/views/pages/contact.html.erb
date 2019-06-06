@@ -1,34 +1,31 @@
-<h1>Contact PickItUp!</h1>
+<h1>Contact PickItUp</h1>
 
-<div class="contact">
-    <div class="contact-container">
-        <div class="box">
-            <%= form_for :contact do |f| %>
-                <div class="inputBox">  
-                    <%= f.text_field :name, class: 'name' %>
-                    <%= f.label :name %>
-                </div>
-                
-                <div class="inputBox">
-                    <% if current_user %>
-                        <%= f.email_field :email, value: current_user.email, class: 'email' %>
-                    <% else %>
-                        <%= f.email_field :email, class: 'email' %>
-                    <% end %>
-                    <%= f.label :email, "My Email" %>
-                </div>    
+<div class="contact-container">
+    <div class="box">
+        <%= form_for :contact do |f| %>
+            <div class="inputBox">  
+                <%= f.text_field :name, class: 'name' %>
+                <%= f.label :name %>
+            </div>
+            
+            <div class="inputBox">
+                <% if current_user %>
+                    <%= f.email_field :email, value: current_user.email, class: 'email' %>
+                <% else %>
+                    <%= f.email_field :email, class: 'email' %>
+                <% end %>
+                <%= f.label :email %>
+            </div>    
 
-                <div class="inputBox">
-                    <%= f.text_area :message, class: 'message' %>
-                    <%= f.label :message %>
-                </div>
+            <div class="inputBox">
+                <%= f.text_area :message, class: 'message' %>
+                <%= f.label :message %>
+            </div>
 
-                <div>
-                    <%= f.submit 'SEND' %>
-                </div>
+            <div>
+                <%= f.submit 'SEND' %>
+            </div>
 
-            <% end %>
-        </div>
-
+        <% end %>
     </div>
 </div>
