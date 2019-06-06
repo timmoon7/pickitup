@@ -222,8 +222,9 @@ ul li:last-child a {
 
 /* Card Home */
 .card_home {
-  /* border: 1px solid #235B62; */
-  /* Add shadows to create the "card" effect */
+  text-align: center;
+  margin: 0 auto;
+  max-width: 70%;
   box-shadow: 0 4px 8px 0 #235b62;
   transition: 0.3s;
   border-radius: 5px;
@@ -340,9 +341,13 @@ ul li:last-child a {
     /* color: #235B62; */
   }
 
+  .home {
+    margin-bottom: 0.5em;
+  }
+
   .grid {
     display: grid;
-    grid-template-columns: 1fr repeat(2, minmax(auto, 25em)) 1fr;
+    grid-template-columns: 1fr repeat(2, minmax(auto, 30em)) 1fr;
   }
 
   #section-a .content-text {
@@ -371,6 +376,10 @@ ul li:last-child a {
 
   #section-b li {
     width: 32%;
+  }
+
+  #section-b .card_home {
+    max-width: 100%;
   }
 
   #section-b .card_home .card_img {
