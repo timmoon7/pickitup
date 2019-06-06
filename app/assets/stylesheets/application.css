@@ -224,7 +224,7 @@ ul li:last-child a {
 .card_home {
   text-align: center;
   margin: 0 auto;
-  max-width: 70%;
+  max-width: 80%;
   box-shadow: 0 4px 8px 0 #235b62;
   transition: 0.3s;
   border-radius: 5px;
