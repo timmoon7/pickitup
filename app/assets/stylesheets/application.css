@@ -413,9 +413,9 @@ ul li:last-child a {
   border-radius: 5px;
   font-family: "Raleway";
 }
-@media (min-width: 991px) {
+@media (min-width: 813px) {
   .box {
-    width: 45%;
+    width: 50%;
   }
 }
 
@@ -521,7 +521,7 @@ h3.h3-red {
 .form-wrapper {
   background-color: #c4cace;
   list-style-type: none;
-  margin: 10px;
+  margin: 10px 30px;
   padding: 10px 20px 0;
   border-radius: 10px;
   display: flex;
@@ -556,8 +556,9 @@ h3.h3-red {
   padding-bottom: 10px;
 }
 
-@media (min-width: 991px) {
+@media (min-width: 813px) {
   .form-wrapper {
-    margin: 0 250px;
+    max-width: 50%;
+    margin: 0 auto;
   }
 }
