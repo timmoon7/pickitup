@@ -17,7 +17,7 @@ gem 'pundit', '~> 1.1'
 gem 'geocoder'
 gem 'country_select'
 # Authentication
-gem 'devise', '~> 4.4', '>= 4.4.3'
+gem 'devise', '~> 4.7'
 # Pagination 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 # Payment
@@ -30,7 +30,7 @@ gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1', '>= 1.1.4'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
